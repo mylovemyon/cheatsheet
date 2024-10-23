@@ -1,3 +1,4 @@
+https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/managing-rid-issuance
 $ enum4linux
 ```
 enum4linux v0.9.1 (http://labs.portcullis.co.uk/application/enum4linux/)
