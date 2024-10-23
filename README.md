@@ -1,2 +1,2 @@
 ## tools
-- [Cyberchef](https://github.com/gchq/CyberChef)
+- [cyberchef](https://github.com/gchq/CyberChef)
