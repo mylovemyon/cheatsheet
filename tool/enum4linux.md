@@ -58,7 +58,13 @@ script is basically just a wrapper around rpcclient, net, nmblookup and
 smbclient.  Polenum from http://labs.portcullis.co.uk/application/polenum/ 
 is required to get Password Policy info.
 ```
-
+v、u、p、wオプションがないと、aオプションが設定されるので-vオプションでデバックを有効にした方がよさそう。
+```perl
+# Enable -a if no other options (apart from -v, -u, -p or -w) are given
+unless (scalar( grep { $_ ne 'v' && $_ ne 'u' && $_ ne 'p' && $_ ne 'w' } keys %opts)) {
+	$opts{'a'} = 1;
+}
+```
 
 ## デフォルトオプション 
 コード一部を確認してみると、オプション指定しなくても実行される関数がある。
