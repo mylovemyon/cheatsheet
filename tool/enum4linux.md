@@ -60,7 +60,7 @@ is required to get Password Policy info.
 
 ## デフォルトオプション 
 コード一部を確認してみると、オプション指定しなくても実行される関数がある。
-```
+```perl
 # Basic enumeration, check session
 get_workgroup();
 get_nbtstat()          if $opts{'n'};
