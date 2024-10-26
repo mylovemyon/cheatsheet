@@ -7,6 +7,7 @@ Usage: [-?fMSTrAV] [-?|--help] [--usage] [-B|--broadcast=BROADCAST-ADDRESS] [-f|
 ```
 
 ## -Aオプション
+ノードステータスの問い合わせを実行。
 ```
 └─$ nmblookup -A 10.10.82.228
 Looking up status of 10.10.82.228
@@ -19,3 +20,7 @@ Looking up status of 10.10.82.228
 
         MAC Address = 02-A4-17-25-12-B9
 ```
+<>内の数値が、ノードタイプを表す。
+
+参考
+[Windowsに潜むデフォルト設定の落とし穴（中）](https://xtech.nikkei.com/it/members/NBY/techsquare/20021129/2/)
