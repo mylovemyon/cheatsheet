@@ -102,6 +102,8 @@ sub get_workgroup {
 	print_plus("Got domain/workgroup name: $global_workgroup\n");
 }
 ```
+-wオプションで手動でドメインが指定されていない場合は、nmblookupでドメインを取得する。
+
 
 ## -nオプション  
 nmblookupコマンドを使用してノードステータスの問い合わせを実行。
