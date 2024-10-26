@@ -22,5 +22,7 @@ Looking up status of 10.10.82.228
 ```
 <>内の数値が、ノードタイプを表す。
 
-参考
-[Windowsに潜むデフォルト設定の落とし穴（中）](https://xtech.nikkei.com/it/members/NBY/techsquare/20021129/2/)
+NetBIOS over TCP/IPについて  
+[Windowsに潜むデフォルト設定の落とし穴（中）](https://xtech.nikkei.com/it/members/NBY/techsquare/20021129/2/)  
+[Vistaの目指すネットワークの姿（2）－－NetBIOSなしでWindowsネットを実現](https://xtech.nikkei.com/it/article/COLUMN/20080916/314893/)  
+[Windowsのファイル共有に用いられるNetBIOSとは？](https://atmarkit.itmedia.co.jp/fpc/experiments/008bbrouter_sec/block_share_02.html)
