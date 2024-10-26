@@ -7,7 +7,8 @@ Usage: [-?fMSTrAV] [-?|--help] [--usage] [-B|--broadcast=BROADCAST-ADDRESS] [-f|
 ```
 
 ## -Aオプション
-UDP137番ポートに対して、ノードステータスの問い合わせを実行。
+UDP137番ポートに対して、ノードステータスの問い合わせを実行。  
+MACアドレスも取得できる。
 ```
 └─$ nmblookup -A 10.10.82.228
 Looking up status of 10.10.82.228
