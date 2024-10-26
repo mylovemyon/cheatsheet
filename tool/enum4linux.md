@@ -56,7 +56,10 @@ script is basically just a wrapper around rpcclient, net, nmblookup and
 smbclient.  Polenum from http://labs.portcullis.co.uk/application/polenum/ 
 is required to get Password Policy info.
 ```
-ちなみにコード一部を確認してみると、オプション指定しなくても実行される関数がある。
+
+
+## デフォルトオプション 
+コード一部を確認してみると、オプション指定しなくても実行される関数がある。
 ```
 # Basic enumeration, check session
 get_workgroup();
@@ -65,6 +68,39 @@ make_session();
 get_ldapinfo()         if $opts{'l'};
 get_domain_sid();
 get_os_info()          if $opts{'o'};
+```
+### get_workgroup()
+```
+# Get workgroup from nbstat info - we need this for lots of rpcclient calls
+sub get_workgroup {
+	print_heading("Enumerating Workgroup/Domain on $global_target");
+	print_verbose("Attempting to get domain name with command: nmblookup -A '$global_target'\n") if $verbose;
+
+	# Workgroup might already be known - e.g. from command line or from get_os_info()
+	unless ($global_workgroup) {
+		print "target is tainted\n" if tainted($global_target); # DEBUG
+		$global_workgroup = `nmblookup -A '$global_target'`; # Global var.  Erg!
+		($global_workgroup) = $global_workgroup =~ /\s+(\S+)\s+<00> - <GROUP>/s;
+		unless (defined($global_workgroup)) {
+			# dc.example.org. hostmaster.example.org. 1 900 600 86400 3600
+			$global_workgroup = `dig +short 0.in-addr.arpa`;
+			($global_workgroup) = $global_workgroup =~ /.*\. hostmaster\.(.*?)\. .*/s;
+			if (defined($global_workgroup)) {
+				print "[+] Domain guessed: $global_workgroup\n";
+			} else {
+				$global_workgroup = "WORKGROUP";
+				print_error("Can\'t find workgroup/domain\n");
+				print "\n";
+				return;
+			}
+		}
+		unless (defined($global_workgroup) and $global_workgroup =~ /^[A-Za-z0-9_\.\-]+$/) {
+			print_error("Workgroup \"$global_workgroup\"contains some illegal characters\n");
+			exit 1;
+		}
+	}
+	print_plus("Got domain/workgroup name: $global_workgroup\n");
+}
 ```
 
 ## -nオプション  
