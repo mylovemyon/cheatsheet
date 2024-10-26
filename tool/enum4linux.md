@@ -56,7 +56,16 @@ script is basically just a wrapper around rpcclient, net, nmblookup and
 smbclient.  Polenum from http://labs.portcullis.co.uk/application/polenum/ 
 is required to get Password Policy info.
 ```
-
+ちなみにコード一部を確認してみると、オプション指定しなくても実行される関数がある。
+```
+# Basic enumeration, check session
+get_workgroup();
+get_nbtstat()          if $opts{'n'};
+make_session();
+get_ldapinfo()         if $opts{'l'};
+get_domain_sid();
+get_os_info()          if $opts{'o'};
+```
 
 ## -nオプション  
 nmblookupコマンドを使用してノードステータスの問い合わせを実行。
