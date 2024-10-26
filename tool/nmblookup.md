@@ -9,7 +9,7 @@ Usage: [-?fMSTrAV] [-?|--help] [--usage] [-B|--broadcast=BROADCAST-ADDRESS] [-f|
 ## -Aオプション
 UDP137番ポートに対して、ノードステータスの問い合わせを実行。  
 MACアドレスも取得できる。
-```
+```zsh
 └─$ nmblookup -A 10.10.82.228
 Looking up status of 10.10.82.228
         JON-PC          <00> -         B <ACTIVE> 
