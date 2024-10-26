@@ -54,7 +54,8 @@ script is basically just a wrapper around rpcclient, net, nmblookup and
 smbclient.  Polenum from http://labs.portcullis.co.uk/application/polenum/ 
 is required to get Password Policy info.
 ```
-`-n`オプション
+`-n`オプション  
+nsmlookupコマンドを使用してノードステータスの問い合わせを実行。
 ```
 sub get_nbtstat {
 	print_heading("Nbtstat Information for $global_target");
