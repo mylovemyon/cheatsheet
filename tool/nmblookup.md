@@ -23,7 +23,7 @@ Looking up status of 10.10.82.228
 ```
 <>内の数値が、ノードタイプを表す。
 ノードタイプの種類はこちら（enum4linuxから抜粋）
-```
+```json
 ["__MSBROWSE__", "01", 0, "Master Browser"],
 ["INet~Services", "1C", 0, "IIS"],
 ["IS~", "00", 1, "IIS"],
