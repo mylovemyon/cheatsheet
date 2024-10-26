@@ -1,6 +1,8 @@
 https://github.com/CiscoCXSecurity/enum4linux  
 Perlで実装  
 https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/managing-rid-issuance
+
+
 ## help
 ```
 enum4linux v0.9.1 (http://labs.portcullis.co.uk/application/enum4linux/)
@@ -104,6 +106,32 @@ sub get_workgroup {
 ```
 -wオプションで手動でドメインが指定されていない場合は、nmblookupでドメインを取得する。  
 nmblookupで取得できない場合は、digで取得するがそれでも取得できない場合はドメイン名に「WORKGROUP」を設定する。
+### make_session()
+```perl
+# See if we can connect using a null session or supplied credentials
+sub make_session {
+	print_heading("Session Check on $global_target");
+	my $command = "smbclient -W '$global_workgroup' //'$global_target'/ipc\$ -U'$global_username'\%'$global_password' -c 'help' 2>&1";
+	print_verbose("Attempting to make null session using command: $command\n") if $verbose;
+	my $os_info = `$command`;
+	chomp $os_info;
+	if ($os_info =~ /protocol negotiation failed: NT_STATUS_CONNECTION_RESET/) {
+		print_error("Protocol mismatch.  smbclient doesn\'t support the same protocol versions as the server.  You likely need to install a later version of Samba.\n");
+	}
+	if ($os_info =~ /case_sensitive/) {
+		print_plus("Server $global_target allows sessions using username '$global_username', password '$global_password'\n");
+	} else {
+		print_error("Server doesn't allow session using username '$global_username', password '$global_password'.  Aborting remainder of tests.\n");
+		exit 1;
+	}
+
+	# Use this info to set workgroup if possible
+	unless ($global_workgroup) {
+		($global_workgroup) = $os_info =~ /Domain=\[([^]]*)\]/;
+		print_plus("Got domain/workgroup name: $global_workgroup\n");
+	}
+}
+```
 
 
 ## -nオプション  
