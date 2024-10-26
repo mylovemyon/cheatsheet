@@ -1,5 +1,4 @@
 https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/managing-rid-issuance
-$ enum4linux
 ```
 enum4linux v0.9.1 (http://labs.portcullis.co.uk/application/enum4linux/)
 Copyright (C) 2011 Mark Lowe (mrl@portcullis-security.com)
@@ -53,4 +52,13 @@ Dependancy info: You will need to have the samba package installed as this
 script is basically just a wrapper around rpcclient, net, nmblookup and 
 smbclient.  Polenum from http://labs.portcullis.co.uk/application/polenum/ 
 is required to get Password Policy info.
+```
+`-n`オプション
+```
+sub get_nbtstat {
+	print_heading("Nbtstat Information for $global_target");
+	my $output = `nmblookup -A '$global_target' 2>&1`;
+	$output = nbt_to_human($output);
+	print "$output\n";
+}
 ```
