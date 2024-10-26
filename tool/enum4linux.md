@@ -70,7 +70,7 @@ get_domain_sid();
 get_os_info()          if $opts{'o'};
 ```
 ### get_workgroup()
-```
+```perl
 # Get workgroup from nbstat info - we need this for lots of rpcclient calls
 sub get_workgroup {
 	print_heading("Enumerating Workgroup/Domain on $global_target");
@@ -105,7 +105,7 @@ sub get_workgroup {
 
 ## -nオプション  
 nmblookupコマンドを使用してノードステータスの問い合わせを実行。
-```
+```perl
 sub get_nbtstat {
 	print_heading("Nbtstat Information for $global_target");
 	my $output = `nmblookup -A '$global_target' 2>&1`;
