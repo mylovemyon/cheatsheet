@@ -1,5 +1,7 @@
 https://github.com/CiscoCXSecurity/enum4linux  
+Perlで実装  
 https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/managing-rid-issuance
+## help
 ```
 enum4linux v0.9.1 (http://labs.portcullis.co.uk/application/enum4linux/)
 Copyright (C) 2011 Mark Lowe (mrl@portcullis-security.com)
@@ -54,8 +56,10 @@ script is basically just a wrapper around rpcclient, net, nmblookup and
 smbclient.  Polenum from http://labs.portcullis.co.uk/application/polenum/ 
 is required to get Password Policy info.
 ```
-`-n`オプション  
-nsmlookupコマンドを使用してノードステータスの問い合わせを実行。
+
+
+## -nオプション  
+nmblookupコマンドを使用してノードステータスの問い合わせを実行。
 ```
 sub get_nbtstat {
 	print_heading("Nbtstat Information for $global_target");
@@ -63,4 +67,18 @@ sub get_nbtstat {
 	$output = nbt_to_human($output);
 	print "$output\n";
 }
+```
+実行結果。nmblookupの結果をノードの種類が分かるよう整形している。
+```
+ ================================( Nbtstat Information for 10.10.49.235 )================================
+
+Looking up status of 10.10.49.235
+        JON-PC          <00> -         B <ACTIVE>  Workstation Service
+        WORKGROUP       <00> - <GROUP> B <ACTIVE>  Domain/Workgroup Name
+        JON-PC          <20> -         B <ACTIVE>  File Server Service
+        WORKGROUP       <1e> - <GROUP> B <ACTIVE>  Browser Service Elections
+        WORKGROUP       <1d> -         B <ACTIVE>  Master Browser
+        ..__MSBROWSE__. <01> - <GROUP> B <ACTIVE>  Master Browser
+
+        MAC Address = 02-BC-B7-A3-F7-17
 ```
