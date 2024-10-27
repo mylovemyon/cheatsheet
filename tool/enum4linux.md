@@ -58,7 +58,7 @@ script is basically just a wrapper around rpcclient, net, nmblookup and
 smbclient.  Polenum from http://labs.portcullis.co.uk/application/polenum/ 
 is required to get Password Policy info.
 ```
-v、u、p、wオプションがないと、aオプションが設定されるので-vオプションでデバックを有効にした方がよさそう。
+v、u、p、wオプションがないと、aオプションが設定されるので`-v`オプションでデバックを有効にした方がよさそう。
 ```perl
 # Enable -a if no other options (apart from -v, -u, -p or -w) are given
 unless (scalar( grep { $_ ne 'v' && $_ ne 'u' && $_ ne 'p' && $_ ne 'w' } keys %opts)) {
@@ -110,8 +110,8 @@ sub get_workgroup {
 	print_plus("Got domain/workgroup name: $global_workgroup\n");
 }
 ```
--wオプションで手動でドメインが指定されていない場合は、nmblookupでドメインを取得する。  
-nmblookupで取得できない場合は、digで取得するがそれでも取得できない場合はドメイン名に「WORKGROUP」を設定する。
+`-w`オプションで手動でドメインが指定されていない場合は、`nmblookup`でドメインを取得する。  
+nmblookupで取得できない場合は、`dig`で取得するがそれでも取得できない場合はドメイン名に「WORKGROUP」を設定する。
 ### make_session()
 ```perl
 # See if we can connect using a null session or supplied credentials
@@ -141,7 +141,7 @@ sub make_session {
 
 
 ## -nオプション  
-nmblookupコマンドを使用してノードステータスの問い合わせを実行。
+`nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
 ```perl
 sub get_nbtstat {
 	print_heading("Nbtstat Information for $global_target");
