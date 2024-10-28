@@ -56,4 +56,4 @@ Deprecated legacy options:
 Version options:
   -V, --version                                Print version
 ```
-https://securelist.com/no-auth-domain-information-enumeration/112629/
+[A journey into forgotten Null Session and MS-RPC interfaces](https://securelist.com/no-auth-domain-information-enumeration/112629/)
