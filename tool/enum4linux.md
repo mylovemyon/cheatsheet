@@ -159,7 +159,7 @@ sub get_domain_sid {
 	}
 }
 ```
-`rpcclient`で「lsaquery」を実行しドメインのSIDを取得。
+`rpcclient`で「lsaquery」を実行しドメインのSIDを取得。取得したSIDからドメインに加入しているかどうか判別。
 
 ## -nオプション  
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
