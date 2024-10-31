@@ -46,3 +46,7 @@ Deprecated legacy options:
 Version options:
   -V, --version                                Print version
 ```
+[What is the IPC$ Share and Why Should You Care?](https://dec-solutions.com/what-is-the-ipc-share-and-why-should-you-care/)  
+[Description of the IPC$ share](https://smallvoid.com/article/winnt-ipc-share.html)  
+[The Hacker Recipes](https://www.thehacker.recipes/ad/recon/ms-rpc)  
+[Listing remote named pipes](https://www.outflank.nl/blog/2023/10/19/listing-remote-named-pipes/)
