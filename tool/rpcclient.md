@@ -46,7 +46,14 @@ Deprecated legacy options:
 Version options:
   -V, --version                                Print version
 ```
+IPC$についての参考  
+WindowsXP以前まではIPC$へのNullセッションができたので、脆弱な部分があったらしい
+以降は、Null接続はできるが権限はもたないようになっている
+
+[IPC$:プログラム間の通信に必要な名前付きパイプを共有するリソースで削除できない](https://learn.microsoft.com/ja-jp/troubleshoot/windows-server/networking/remove-administrative-shares)  
+[Windows での IPC$ 共有と null セッション動作](https://learn.microsoft.com/ja-jp/troubleshoot/windows-server/networking/inter-process-communication-share-null-session)  
 [What is the IPC$ Share and Why Should You Care?](https://dec-solutions.com/what-is-the-ipc-share-and-why-should-you-care/)  
 [Description of the IPC$ share](https://smallvoid.com/article/winnt-ipc-share.html)  
+[Windows IPC$ share behaviour](https://community.spiceworks.com/t/windows-ipc-share-behaviour/741818)  
 [The Hacker Recipes](https://www.thehacker.recipes/ad/recon/ms-rpc)  
 [Listing remote named pipes](https://www.outflank.nl/blog/2023/10/19/listing-remote-named-pipes/)
