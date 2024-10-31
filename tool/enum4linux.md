@@ -66,8 +66,8 @@ unless (scalar( grep { $_ ne 'v' && $_ ne 'u' && $_ ne 'p' && $_ ne 'w' } keys %
 }
 ```
 
-## デフォルトオプション 
-コード一部を確認してみると、オプション指定しなくても実行される関数がある。
+## デフォルト 
+オプション指定しなくても実行される関数がある。
 ```perl
 # Basic enumeration, check session
 get_workgroup();
@@ -138,7 +138,28 @@ sub make_session {
 	}
 }
 ```
-`smbclient`でNullセッションや指定したクレデンシャルが使えるか確認している。
+`smbclient`でNullセッションか指定したクレデンシャルで＄IPCに接続できるか確認している。  
+NullセッションはWindowsXP以降ではデフォルトで無効にされている（詳細はrpcclient.md）。
+### get_domain_sid()
+```perl
+sub get_domain_sid {
+	print_heading("Getting domain SID for $global_target");
+	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' $global_target -c 'lsaquery' 2>&1";
+	print_verbose("Attempting to get domain SID with command: $command\n") if $verbose;
+	my $domain_sid_text = `$command`;
+	chomp $domain_sid_text;
+	print $domain_sid_text;
+	print "\n";
+	if ($domain_sid_text =~ /Domain Sid: S-0-0/) {
+		print_plus("Host is part of a workgroup (not a domain)\n");
+	} elsif ($domain_sid_text =~ /Domain Sid: S-\d+-\d+-\d+-\d+-\d+-\d+/) {
+		print_plus("Host is part of a domain (not a workgroup)\n");
+	} else {
+		print_plus("Can't determine if host is part of domain or part of a workgroup\n");
+	}
+}
+```
+`rpcclient`で「lsaquery」を実行しドメインのSIDを取得。
 
 ## -nオプション  
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
