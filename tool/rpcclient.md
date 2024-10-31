@@ -50,10 +50,12 @@ IPC$について
 WindowsXP以前まではIPC$すなわちNullセッションから特定の操作ができた。  
 以降は、Nullセッションはできるが権限はもたないようにデフォルトで設定されている（ポリシーやレジストリで）。  
 プログラム間通信の名前付きパイプのために使用され、恒久的にIPC$を削除することはできない。  
+rpcでもIPC$を使用する。詳細は[こちら](https://sensepost.com/blog/2018/a-new-look-at-null-sessions-and-user-enumeration/)
 
 [IPC$:プログラム間の通信に必要な名前付きパイプを共有するリソースで削除できない](https://learn.microsoft.com/ja-jp/troubleshoot/windows-server/networking/remove-administrative-shares)  
 [Windows での IPC$ 共有と null セッション動作](https://learn.microsoft.com/ja-jp/troubleshoot/windows-server/networking/inter-process-communication-share-null-session)  
 [What is the IPC$ Share and Why Should You Care?](https://dec-solutions.com/what-is-the-ipc-share-and-why-should-you-care/)  
 [Description of the IPC$ share](https://smallvoid.com/article/winnt-ipc-share.html)  
-[The Hacker Recipes](https://www.thehacker.recipes/ad/recon/ms-rpc)  
-[Listing remote named pipes](https://www.outflank.nl/blog/2023/10/19/listing-remote-named-pipes/)
+[Listing remote named pipes](https://www.outflank.nl/blog/2023/10/19/listing-remote-named-pipes/)  
+[MS-RPC とそのセキュリティメカニズムの概要](https://www.akamai.com/ja/blog/security-research/msrpc-security-mechanisms)  
+[MS-RPC](https://www.thehacker.recipes/ad/recon/ms-rpc)  
