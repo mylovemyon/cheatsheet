@@ -138,7 +138,7 @@ sub make_session {
 	}
 }
 ```
-[Windows での IPC$ 共有と null セッション動作](https://learn.microsoft.com/ja-jp/troubleshoot/windows-server/networking/inter-process-communication-share-null-session)
+`smbclient`でNullセッションや指定したクレデンシャルが使えるか確認している。
 
 ## -nオプション  
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
