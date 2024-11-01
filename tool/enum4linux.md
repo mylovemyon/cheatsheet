@@ -77,87 +77,21 @@ get_ldapinfo()         if $opts{'l'};
 get_domain_sid();
 get_os_info()          if $opts{'o'};
 ```
-### get_workgroup()
+### [get_workgroup()](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L384)
 ```perl
-# Get workgroup from nbstat info - we need this for lots of rpcclient calls
-sub get_workgroup {
-	print_heading("Enumerating Workgroup/Domain on $global_target");
-	print_verbose("Attempting to get domain name with command: nmblookup -A '$global_target'\n") if $verbose;
-
-	# Workgroup might already be known - e.g. from command line or from get_os_info()
-	unless ($global_workgroup) {
-		print "target is tainted\n" if tainted($global_target); # DEBUG
-		$global_workgroup = `nmblookup -A '$global_target'`; # Global var.  Erg!
-		($global_workgroup) = $global_workgroup =~ /\s+(\S+)\s+<00> - <GROUP>/s;
-		unless (defined($global_workgroup)) {
-			# dc.example.org. hostmaster.example.org. 1 900 600 86400 3600
-			$global_workgroup = `dig +short 0.in-addr.arpa`;
-			($global_workgroup) = $global_workgroup =~ /.*\. hostmaster\.(.*?)\. .*/s;
-			if (defined($global_workgroup)) {
-				print "[+] Domain guessed: $global_workgroup\n";
-			} else {
-				$global_workgroup = "WORKGROUP";
-				print_error("Can\'t find workgroup/domain\n");
-				print "\n";
-				return;
-			}
-		}
-		unless (defined($global_workgroup) and $global_workgroup =~ /^[A-Za-z0-9_\.\-]+$/) {
-			print_error("Workgroup \"$global_workgroup\"contains some illegal characters\n");
-			exit 1;
-		}
-	}
-	print_plus("Got domain/workgroup name: $global_workgroup\n");
-}
+$global_workgroup = `nmblookup -A '$global_target'`; # Global var.  Erg!
 ```
 `-w`オプションで手動でドメインが指定されていない場合は、`nmblookup`でドメインを取得する。  
 nmblookupで取得できない場合は、`dig`で取得するがそれでも取得できない場合はドメイン名に「WORKGROUP」を設定する。
-### make_session()
+### [make_session()](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L452)
 ```perl
-# See if we can connect using a null session or supplied credentials
-sub make_session {
-	print_heading("Session Check on $global_target");
-	my $command = "smbclient -W '$global_workgroup' //'$global_target'/ipc\$ -U'$global_username'\%'$global_password' -c 'help' 2>&1";
-	print_verbose("Attempting to make null session using command: $command\n") if $verbose;
-	my $os_info = `$command`;
-	chomp $os_info;
-	if ($os_info =~ /protocol negotiation failed: NT_STATUS_CONNECTION_RESET/) {
-		print_error("Protocol mismatch.  smbclient doesn\'t support the same protocol versions as the server.  You likely need to install a later version of Samba.\n");
-	}
-	if ($os_info =~ /case_sensitive/) {
-		print_plus("Server $global_target allows sessions using username '$global_username', password '$global_password'\n");
-	} else {
-		print_error("Server doesn't allow session using username '$global_username', password '$global_password'.  Aborting remainder of tests.\n");
-		exit 1;
-	}
-
-	# Use this info to set workgroup if possible
-	unless ($global_workgroup) {
-		($global_workgroup) = $os_info =~ /Domain=\[([^]]*)\]/;
-		print_plus("Got domain/workgroup name: $global_workgroup\n");
-	}
-}
+my $command = "smbclient -W '$global_workgroup' //'$global_target'/ipc\$ -U'$global_username'\%'$global_password' -c 'help' 2>&1";
 ```
 `smbclient`でNullセッションか指定したクレデンシャルで＄IPCに接続できるか確認している。  
 NullセッションはWindowsXP以降ではデフォルトで無効にされている（詳細はrpcclient.md）。
-### get_domain_sid()
+### [get_domain_sid()](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L366)
 ```perl
-sub get_domain_sid {
-	print_heading("Getting domain SID for $global_target");
-	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' $global_target -c 'lsaquery' 2>&1";
-	print_verbose("Attempting to get domain SID with command: $command\n") if $verbose;
-	my $domain_sid_text = `$command`;
-	chomp $domain_sid_text;
-	print $domain_sid_text;
-	print "\n";
-	if ($domain_sid_text =~ /Domain Sid: S-0-0/) {
-		print_plus("Host is part of a workgroup (not a domain)\n");
-	} elsif ($domain_sid_text =~ /Domain Sid: S-\d+-\d+-\d+-\d+-\d+-\d+/) {
-		print_plus("Host is part of a domain (not a workgroup)\n");
-	} else {
-		print_plus("Can't determine if host is part of domain or part of a workgroup\n");
-	}
-}
+my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' $global_target -c 'lsaquery' 2>&1";
 ```
 `rpcclient`で「lsaquery」を実行しドメインのSIDを取得。取得したSIDからドメインに加入しているかどうか判別。
 
