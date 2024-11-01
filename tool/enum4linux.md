@@ -161,6 +161,59 @@ sub get_domain_sid {
 ```
 `rpcclient`で「lsaquery」を実行しドメインのSIDを取得。取得したSIDからドメインに加入しているかどうか判別。
 
+## -Uオプション
+```perl
+sub enum_users {
+	my @rids;
+	my @rids2;
+	
+	print_heading("Users on $global_target");
+	my $command = "rpcclient -W '$global_workgroup' -c querydispinfo -U'$global_username'\%'$global_password' -d 10 '$global_target' 2>&1";
+	print_verbose("Attempting to get userlist with command: $command\n") if $verbose;
+	my $users = `$command`;
+	if ($users ne "") {
+		my $continue = 1;
+		if ($users =~ /NT_STATUS_ACCESS_DENIED/) {
+			print_error("Couldn't find users using querydispinfo: NT_STATUS_ACCESS_DENIED\n");
+		} else {
+			($users) = $users =~ /(index:.*)/s;
+			print $users;
+			$continue = 0;
+		}
+		my @rids_hex = $users =~ /RID:\s+0x([a-fA-f0-9]+)\s/gs;
+		@rids = map { hex($_) } @rids_hex;
+	} else {
+        	print_error("No response using rpcclient querydispinfo\n");
+    	}
+
+	print "\n";
+	$command = "rpcclient -W '$global_workgroup' -c enumdomusers -U'$global_username'\%'$global_password' -d 10 '$global_target' 2>&1";
+	print_verbose("Attempting to get userlist with command: $command\n") if $verbose;
+	$users = `$command`;
+	if ($users ne "") {
+		if ($users =~ /NT_STATUS_ACCESS_DENIED/) {
+			print_error("Couldn't find users using enumdomusers: NT_STATUS_ACCESS_DENIED\n");
+		} else {
+			($users) = $users =~ /(user:.*)/s;
+			print $users;
+		}
+		my @rids_hex2 = $users =~ /rid:\[0x([A-Fa-f0-9]+)\]/gs;
+		@rids2 = map { hex($_) } @rids_hex2;
+	} else {
+        	print_error("No response using rpcclient enumdomusers\n");
+    	}
+
+	my %rids;
+	foreach my $rid (@rids, @rids2) {
+		$rids{$rid} = 1;
+	}
+	foreach my $rid (keys %rids) {
+		get_user_details_from_rid($rid);
+	}
+}
+
+```
+
 ## -nオプション  
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
 ```perl
