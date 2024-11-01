@@ -95,7 +95,7 @@ my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_p
 ```
 `rpcclient`で「lsaquery」を実行しドメインのSIDを取得。取得したSIDからドメインに加入しているかどうか判別。
 
-## -Uオプション
+## [-U](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L1014)
 ```perl
 sub enum_users {
 	my @rids;
@@ -148,15 +148,10 @@ sub enum_users {
 
 ```
 
-## -nオプション  
+## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
 ```perl
-sub get_nbtstat {
-	print_heading("Nbtstat Information for $global_target");
-	my $output = `nmblookup -A '$global_target' 2>&1`;
-	$output = nbt_to_human($output);
-	print "$output\n";
-}
+my $output = `nmblookup -A '$global_target' 2>&1`;
 ```
 実行結果。nmblookupの結果をノードの種類が分かるよう整形している。
 ```
