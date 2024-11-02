@@ -164,7 +164,7 @@ S-1-1-0
 #### queryuser
 ユーザー情報を問い合わせる。コマンドではユーザ名でも問い合わせられる。  
 ```Usage: queryuser rid [info level] [access mask] ```
-```
+```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryuser administrator" 10.10.165.140 
         User Name   :   Administrator
         Full Name   :
@@ -213,6 +213,12 @@ S-1-1-0
         group rid:[0x208] attr:[0x7]
         group rid:[0x200] attr:[0x7]
         group rid:[0x206] attr:[0x7]
+```
+#### queryuseraliases
+
+`Usage: queryuseraliases builtin|domain sid1 sid2`
+```zsh
+
 ```
 #### querydominfo
 ドメイン情報を問い合わせる  
