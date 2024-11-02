@@ -61,15 +61,15 @@ Domain Sid: S-1-5-21-3591857110-2884097990-301047963
 ### lookupsids
 SID からユーザー名を解決する
 ```
-└─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
+└─$ rpcclient -U "spookysec.local/backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
 S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (1)
 ```
 
 ### lookupnames
 ユーザー名から SID を解決する
 ```
-└─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "lookupnames administrator" 10.10.165.140 
-administrator S-1-5-21-3591857110-2884097990-301047963-500 (User: 1)
+└─$ rpcclient -U "spookysec.local/backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
+S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (1)
 ```
 
 ### 
