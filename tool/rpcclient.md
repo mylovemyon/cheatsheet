@@ -412,7 +412,7 @@ SAMR_LOOKUP_DOMAIN: Domain Name: thm-ad Domain SID: S-1-5-21-3591857110-28840979
 
 ### netlogon
 #### dsr_getdcname
-信頼済みDC名の取得
+信頼済みDC名の取得  
 `Usage: dsr_getdcname [domain_name] [domain_guid] [site_guid] [flags]`
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "dsr_getdcname thm-ad" 10.10.241.53
