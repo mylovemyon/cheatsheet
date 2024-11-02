@@ -66,7 +66,7 @@ S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (1)
 ```
 ### lookupsids3
 lookupsidsコマンドと同じ機能らしいが、Administrator権限でもアクセス拒否され実行されなかった。
-```
+```zsh
 └─$ rpcclient -U "thm-ad/administrator"%"0e0363213e37b94221497260b0bcb4fc" --pw-nt-hash -c "lookupsids3 S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
 result was NT_STATUS_ACCESS_DENIED
 ```
@@ -78,7 +78,7 @@ administrator S-1-5-21-3591857110-2884097990-301047963-500 (User: 1)
 ```
 ### lookupnames4
 lookupnamesコマンドと同じ機能らしいが、Administrator権限でもアクセス拒否され実行されなかった。
-```
+```zsh
 └─$ rpcclient -U "thm-ad/administrator"%"0e0363213e37b94221497260b0bcb4fc" --pw-nt-hash  -c "lookupnames4 administrator" 10.10.165.140 
 result was NT_STATUS_ACCESS_DENIED
 ```
