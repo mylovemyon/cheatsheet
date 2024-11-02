@@ -338,7 +338,7 @@ name:[Builtin] idx:[0x0]
 name administrator: 0x1f4 (1)
 ```
 #### samlookuprids
-
+rid を検索する  
 `Usage: samlookuprids domain|builtin rid1 [rid2 [rid3] [...]]`
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "samlookuprids domain 0x1f4" 10.10.241.53
