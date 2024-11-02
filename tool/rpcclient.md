@@ -162,7 +162,8 @@ S-1-1-0
 
 ### samr
 #### queryuser
-ユーザー情報を問い合わせる。コマンドではユーザ名でもRIDでも問い合わせる。
+ユーザー情報を問い合わせる。コマンドではユーザ名でも問い合わせられる。  
+```Usage: queryuser rid [info level] [access mask] ```
 ```
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryuser administrator" 10.10.165.140 
         User Name   :   Administrator
@@ -193,7 +194,8 @@ S-1-1-0
         logon_hrs[0..21]...
 ```
 #### querygroup
-グループ情報を問い合わせる
+グループ情報を問い合わせる  
+`Usage: querygroup rid [info level] [access mask]`
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "querygroup 0x201" 10.10.165.140 
         Group Name:     Domain Users
@@ -202,7 +204,8 @@ S-1-1-0
         Num Members:16
 ```
 #### queryusergroups
-ユーザーが所属するグループを問い合わせる
+ユーザーが所属するグループを問い合わせる  
+`Usage: queryusergroups rid [access mask]`
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryusergroups 0x1f4" 10.10.165.140 
         group rid:[0x207] attr:[0x7]
