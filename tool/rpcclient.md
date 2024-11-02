@@ -359,7 +359,8 @@ rid を検索する
 rid 0x1f4: Administrator (1)
 ```
 #### samquerysecobj
-SAMR セキュリティオブジェクトを問い合わせる
+SAMR セキュリティオブジェクトを問い合わせる  
+２つのSIDは既知のものであり、「S-1-1-o」は「everyone」ユーザになる。[詳細](https://learn.microsoft.com/ja-jp/windows/win32/secauthz/well-known-sids)
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "samquerysecobj" 10.10.241.53
 revision: 1
