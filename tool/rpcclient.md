@@ -54,7 +54,7 @@ backupユーザはドメインユーザ権限のみをもつ（Domain Admin権�
 ### lsaquery
 ドメイン名やドメインSIDを取得
 ```
-└─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "lsaquery" 10.10.165.140
+└─$ rpcclient -U "spookysec.local/backup"%"backup2517860" -c "lsaquery" 10.10.165.140
 Domain Name: THM-AD
 Domain Sid: S-1-5-21-3591857110-2884097990-301047963
 ```
