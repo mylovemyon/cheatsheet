@@ -269,7 +269,7 @@ Server Role:    ROLE_DOMAIN_PDC
 Unknown 3:      0x1
 ```
 #### enumdomusers
-ドメインユーザーを一覧表示
+ドメインユーザーの列挙
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumdomusers" 10.10.165.140 
 user:[Administrator] rid:[0x1f4]
@@ -291,7 +291,7 @@ user:[backup] rid:[0x45e]
 user:[a-spooks] rid:[0x641]
 ```
 #### enumdomgroups
-ドメイングループを一覧表示
+ドメイングループの列挙
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumdomgroups" 10.10.165.140 
 group:[Enterprise Read-only Domain Controllers] rid:[0x1f2]
@@ -312,7 +312,7 @@ group:[DnsUpdateProxy] rid:[0x44e]
 group:[dc] rid:[0x45d]
 ```
 #### enumalsgruups
-エイリアスグループ(ローカルグループ)を一覧表示する  
+エイリアスグループ(ローカルグループ)の列挙  
 `Usage: enumalsgroups builtin|domain [access mask] [max_size]`
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumalsgroups domain" 10.10.241.53
@@ -322,6 +322,13 @@ group:[Allowed RODC Password Replication Group] rid:[0x23b]
 group:[Denied RODC Password Replication Group] rid:[0x23c]
 group:[DnsAdmins] rid:[0x44d]
 group:[CompStaff] rid:[0x45c]
+```
+#### eunmdomains
+ドメインの列挙
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumdomains" 10.10.241.53
+name:[THM-AD] idx:[0x0]
+name:[Builtin] idx:[0x0]
 ```
 
 https://www.hackingarticles.in/active-directory-enumeration-rpcclient/
