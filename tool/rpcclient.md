@@ -59,19 +59,74 @@ Domain Name: THM-AD
 Domain Sid: S-1-5-21-3591857110-2884097990-301047963
 ```
 ### lookupsids
-SID からユーザー名を解決する
+SID からユーザー名を解決
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
 S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (1)
 ```
 ### lookupnames
-ユーザー名から SID を解決する
+ユーザー名から SID を解決
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lookupnames administrator" 10.10.165.140 
 administrator S-1-5-21-3591857110-2884097990-301047963-500 (User: 1)
 ```
+### lookupnames4
+lookupnamesコマンドと同じ機能らしいが、Administrator権限でもアクセス拒否され実行されなかった。
+```
+└─$ rpcclient -U "thm-ad/administrator" --pw-nt-hash  -c "lookupnames4 administrator" 10.10.165.140  
+Password for [THM-AD\administrator]:
+result was NT_STATUS_ACCESS_DENIED
+```
+### enumtrust
+信頼するドメインの一覧を表示
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumtrust" 10.10.165.140 
 
-### 
+```
+### enumprivs
+ユーザー権利の一覧を表示
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumprivs" 10.10.165.140 
+found 35 privileges
+
+SeCreateTokenPrivilege          0:2 (0x0:0x2)
+SeAssignPrimaryTokenPrivilege           0:3 (0x0:0x3)
+SeLockMemoryPrivilege           0:4 (0x0:0x4)
+SeIncreaseQuotaPrivilege                0:5 (0x0:0x5)
+SeMachineAccountPrivilege               0:6 (0x0:0x6)
+SeTcbPrivilege          0:7 (0x0:0x7)
+SeSecurityPrivilege             0:8 (0x0:0x8)
+SeTakeOwnershipPrivilege                0:9 (0x0:0x9)
+SeLoadDriverPrivilege           0:10 (0x0:0xa)
+SeSystemProfilePrivilege                0:11 (0x0:0xb)
+SeSystemtimePrivilege           0:12 (0x0:0xc)
+SeProfileSingleProcessPrivilege                 0:13 (0x0:0xd)
+SeIncreaseBasePriorityPrivilege                 0:14 (0x0:0xe)
+SeCreatePagefilePrivilege               0:15 (0x0:0xf)
+SeCreatePermanentPrivilege              0:16 (0x0:0x10)
+SeBackupPrivilege               0:17 (0x0:0x11)
+SeRestorePrivilege              0:18 (0x0:0x12)
+SeShutdownPrivilege             0:19 (0x0:0x13)
+SeDebugPrivilege                0:20 (0x0:0x14)
+SeAuditPrivilege                0:21 (0x0:0x15)
+SeSystemEnvironmentPrivilege            0:22 (0x0:0x16)
+SeChangeNotifyPrivilege                 0:23 (0x0:0x17)
+SeRemoteShutdownPrivilege               0:24 (0x0:0x18)
+SeUndockPrivilege               0:25 (0x0:0x19)
+SeSyncAgentPrivilege            0:26 (0x0:0x1a)
+SeEnableDelegationPrivilege             0:27 (0x0:0x1b)
+SeManageVolumePrivilege                 0:28 (0x0:0x1c)
+SeImpersonatePrivilege          0:29 (0x0:0x1d)
+SeCreateGlobalPrivilege                 0:30 (0x0:0x1e)
+SeTrustedCredManAccessPrivilege                 0:31 (0x0:0x1f)
+SeRelabelPrivilege              0:32 (0x0:0x20)
+SeIncreaseWorkingSetPrivilege           0:33 (0x0:0x21)
+SeTimeZonePrivilege             0:34 (0x0:0x22)
+SeCreateSymbolicLinkPrivilege           0:35 (0x0:0x23)
+SeDelegateSessionUserImpersonatePrivilege               0:36 (0x0:0x24)
+```
+
+### a
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "querydispinfo" 10.10.165.140 
 index: 0xfc1 RID: 0x641 acb: 0x00000210 Account: a-spooks       Name: Admin Spooks      Desc: (null)
