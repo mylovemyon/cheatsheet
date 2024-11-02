@@ -161,6 +161,47 @@ S-1-1-0
 ```
 
 ### samr
+#### queryuser
+ユーザー情報を問い合わせる。コマンドではユーザ名でもRIDでも問い合わせる。
+```
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryuser administrator" 10.10.165.140 
+        User Name   :   Administrator
+        Full Name   :
+        Home Drive  :
+        Dir Drive   :
+        Profile Path:
+        Logon Script:
+        Description :   Built-in account for administering the computer/domain
+        Workstations:
+        Comment     :
+        Remote Dial :
+        Logon Time               :      Sat, 02 Nov 2024 03:26:28 EDT
+        Logoff Time              :      Wed, 31 Dec 1969 19:00:00 EST
+        Kickoff Time             :      Wed, 31 Dec 1969 19:00:00 EST
+        Password last set Time   :      Thu, 17 Sep 2020 18:53:29 EDT
+        Password can change Time :      Fri, 18 Sep 2020 18:53:29 EDT
+        Password must change Time:      Wed, 13 Sep 30828 22:48:05 EDT
+        unknown_2[0..31]...
+        user_rid :      0x1f4
+        group_rid:      0x201
+        acb_info :      0x00000210
+        fields_present: 0x00ffffff
+        logon_divs:     168
+        bad_password_count:     0x00000000
+        logon_count:    0x0000000f
+        padding1[0..7]...
+        logon_hrs[0..21]...
+```
+#### queryusergroups
+ユーザーが所属するグループを問い合わせる
+```
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryusergroups 0x1f4" 10.10.165.140 
+        group rid:[0x207] attr:[0x7]
+        group rid:[0x201] attr:[0x7]
+        group rid:[0x208] attr:[0x7]
+        group rid:[0x200] attr:[0x7]
+        group rid:[0x206] attr:[0x7]
+```
 #### querydominfo
 ドメイン情報を問い合わせる  
 ユーザ数が52のと分かる
@@ -178,9 +219,9 @@ Domain Server State:    0x1
 Server Role:    ROLE_DOMAIN_PDC
 Unknown 3:      0x1
 ```
-### enumdomusers
+#### enumdomusers
 ドメインユーザーを一覧表示
-```
+```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumdomusers" 10.10.165.140 
 user:[Administrator] rid:[0x1f4]
 user:[Guest] rid:[0x1f5]
@@ -199,6 +240,27 @@ user:[horshark] rid:[0x459]
 user:[svc-admin] rid:[0x45a]
 user:[backup] rid:[0x45e]
 user:[a-spooks] rid:[0x641]
+```
+#### enumdomgroups
+ドメイングループを一覧表示
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumdomgroups" 10.10.165.140 
+group:[Enterprise Read-only Domain Controllers] rid:[0x1f2]
+group:[Domain Admins] rid:[0x200]
+group:[Domain Users] rid:[0x201]
+group:[Domain Guests] rid:[0x202]
+group:[Domain Computers] rid:[0x203]
+group:[Domain Controllers] rid:[0x204]
+group:[Schema Admins] rid:[0x206]
+group:[Enterprise Admins] rid:[0x207]
+group:[Group Policy Creator Owners] rid:[0x208]
+group:[Read-only Domain Controllers] rid:[0x209]
+group:[Cloneable Domain Controllers] rid:[0x20a]
+group:[Protected Users] rid:[0x20d]
+group:[Key Admins] rid:[0x20e]
+group:[Enterprise Key Admins] rid:[0x20f]
+group:[DnsUpdateProxy] rid:[0x44e]
+group:[dc] rid:[0x45d]
 ```
 
 ### a
