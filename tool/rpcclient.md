@@ -405,9 +405,52 @@ password_properties: 0x00000000
 #### lookupdomain
 ドメイン名の検索  
 `Usage: lookupdomain domain_name`
-```
+```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lookupdomain thm-ad" 10.10.241.53
 SAMR_LOOKUP_DOMAIN: Domain Name: thm-ad Domain SID: S-1-5-21-3591857110-2884097990-301047963
+```
+
+### netlogon
+#### dsr_getdcname
+信頼済みDC名の取得
+`Usage: dsr_getdcname [domain_name] [domain_guid] [site_guid] [flags]`
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "dsr_getdcname thm-ad" 10.10.241.53
+DsGetDcName gave:     info: struct netr_DsRGetDCNameInfo
+        dc_unc                   : *
+            dc_unc                   : '\\AttacktiveDirectory.spookysec.local'
+        dc_address               : *
+            dc_address               : '\\10.10.241.53'
+        dc_address_type          : DS_ADDRESS_TYPE_INET (1)
+        domain_guid              : d0235530-3239-450a-8fbc-4afa8d5e9263
+        domain_name              : *
+            domain_name              : 'spookysec.local'
+        forest_name              : *
+            forest_name              : 'spookysec.local'
+        dc_flags                 : 0xe003f3fd (3758355453)
+               1: NBT_SERVER_PDC           
+               1: NBT_SERVER_GC            
+               1: NBT_SERVER_LDAP          
+               1: NBT_SERVER_DS            
+               1: NBT_SERVER_KDC           
+               1: NBT_SERVER_TIMESERV      
+               1: NBT_SERVER_CLOSEST       
+               1: NBT_SERVER_WRITABLE      
+               1: NBT_SERVER_GOOD_TIMESERV 
+               0: NBT_SERVER_NDNC          
+               0: NBT_SERVER_SELECT_SECRET_DOMAIN_6
+               1: NBT_SERVER_FULL_SECRET_DOMAIN_6
+               1: NBT_SERVER_ADS_WEB_SERVICE
+               1: NBT_SERVER_DS_8          
+               1: NBT_SERVER_DS_9          
+               1: NBT_SERVER_DS_10         
+               1: NBT_SERVER_HAS_DNS_NAME  
+               1: NBT_SERVER_IS_DEFAULT_NC 
+               1: NBT_SERVER_FOREST_ROOT   
+        dc_site_name             : *
+            dc_site_name             : 'Default-First-Site-Name'
+        client_site_name         : *
+            client_site_name         : 'Default-First-Site-Name'
 ```
 
 https://www.hackingarticles.in/active-directory-enumeration-rpcclient/
