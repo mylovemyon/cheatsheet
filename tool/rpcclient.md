@@ -358,7 +358,27 @@ rid を検索する
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "samlookuprids domain 0x1f4" 10.10.241.53
 rid 0x1f4: Administrator (1)
 ```
+#### samquerysecobj
+SAMR セキュリティオブジェクトを問い合わせる
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "samquerysecobj" 10.10.241.53
+revision: 1
+type: 0x8004: SEC_DESC_DACL_PRESENT SEC_DESC_SELF_RELATIVE 
+DACL
+        ACL     Num ACEs:       2       revision:       2
+        ---
+        ACE
+                type: ACCESS ALLOWED (0) flags: 0x00 
+                Specific bits: 0x31
+                Permissions: 0x20031: READ_CONTROL_ACCESS 
+                SID: S-1-1-0
 
+        ACE
+                type: ACCESS ALLOWED (0) flags: 0x00 
+                Specific bits: 0x3f
+                Permissions: 0xf003f: WRITE_OWNER_ACCESS WRITE_DAC_ACCESS READ_CONTROL_ACCESS DELETE_ACCESS 
+                SID: S-1-5-32-544
+```
 
 https://www.hackingarticles.in/active-directory-enumeration-rpcclient/
 ### IPC$について  
