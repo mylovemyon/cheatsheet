@@ -61,19 +61,19 @@ Domain Sid: S-1-5-21-3591857110-2884097990-301047963
 ### lookupsids
 SID からユーザー名を解決する
 ```zsh
-└─$ rpcclient -U "spookysec.local/backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
 S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (1)
 ```
 ### lookupnames
 ユーザー名から SID を解決する
 ```zsh
-└─$ rpcclient -U "spookysec.local/backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
 S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (1)
 ```
 
 ### 
 ```zsh
-└─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "querydispinfo" 10.10.165.140 
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "querydispinfo" 10.10.165.140 
 index: 0xfc1 RID: 0x641 acb: 0x00000210 Account: a-spooks       Name: Admin Spooks      Desc: (null)
 index: 0xeda RID: 0x1f4 acb: 0x00000210 Account: Administrator  Name: (null)    Desc: Built-in account for administering the computer/domain
 index: 0xfc0 RID: 0x45e acb: 0x00000210 Account: backup Name: backup    Desc: (null)
