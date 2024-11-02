@@ -46,6 +46,11 @@ Deprecated legacy options:
 Version options:
   -V, --version                                Print version
 ```
+└─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "lsaquery" 10.10.165.140
+Domain Name: THM-AD
+Domain Sid: S-1-5-21-3591857110-2884097990-301047963
+
+
 IPC$について  
 WindowsXP以前まではIPC$すなわちNullセッションから特定の操作ができた。  
 以降は、Nullセッションはできるが権限はもたないようにデフォルトで設定されている（ポリシーやレジストリで）。  
