@@ -215,11 +215,11 @@ S-1-1-0
         group rid:[0x206] attr:[0x7]
 ```
 #### queryuseraliases
-  
+ユーザが所属するエイリアスを問い合わせる  
 `Usage: queryuseraliases builtin|domain sid1 sid2`
 ```zsh
-└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryuseraliases domain S-1-5-21-3591857110-2884097990-301047963-517" 10.10.241.53
-        group rid:[0x23c] 
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryuseraliases domain S-1-5-21-3591857110-2884097990-301047963-502" 10.10.241.53
+        group rid:[0x23c]
 ```
 #### querygroupmem
 グループに所属するメンバーを問い合わせる  
