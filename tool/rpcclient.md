@@ -53,7 +53,7 @@ TryHackmeの[Attacktive Directory](https://tryhackme.com/r/room/attacktivedirect
 backupユーザはドメインユーザ権限のみをもつ（Domain Admin権限はなし）
 
 ### lsarpc
-####lsaquery
+#### lsaquery
 ドメイン名やドメインSIDを取得
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lsaquery" 10.10.165.140
@@ -163,7 +163,7 @@ S-1-1-0
 ### samr
 #### querydominfo
 ドメイン情報を問い合わせる  
-52のユーザ数だと分かる
+ユーザ数が52のと分かる
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "querydominfo" 10.10.165.140                      
 Domain:         THM-AD
@@ -177,6 +177,28 @@ Force Logoff:   -1
 Domain Server State:    0x1
 Server Role:    ROLE_DOMAIN_PDC
 Unknown 3:      0x1
+```
+### enumdomusers
+ドメインユーザーを一覧表示
+```
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumdomusers" 10.10.165.140 
+user:[Administrator] rid:[0x1f4]
+user:[Guest] rid:[0x1f5]
+user:[krbtgt] rid:[0x1f6]
+user:[skidy] rid:[0x44f]
+user:[breakerofthings] rid:[0x450]
+user:[james] rid:[0x451]
+user:[optional] rid:[0x452]
+user:[sherlocksec] rid:[0x453]
+user:[darkstar] rid:[0x454]
+user:[Ori] rid:[0x455]
+user:[robin] rid:[0x456]
+user:[paradox] rid:[0x457]
+user:[Muirland] rid:[0x458]
+user:[horshark] rid:[0x459]
+user:[svc-admin] rid:[0x45a]
+user:[backup] rid:[0x45e]
+user:[a-spooks] rid:[0x641]
 ```
 
 ### a
