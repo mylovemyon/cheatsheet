@@ -215,7 +215,7 @@ S-1-1-0
         group rid:[0x206] attr:[0x7]
 ```
 #### queryuseraliases
-エイリアスに所属するメンバーを問い合わせる  
+  
 `Usage: queryuseraliases builtin|domain sid1 sid2`
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryuseraliases domain S-1-5-21-3591857110-2884097990-301047963-517" 10.10.241.53
@@ -228,6 +228,20 @@ S-1-1-0
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "querygroupmem 0x200" 10.10.241.53 
         rid:[0x1f4] attr:[0x7]
         rid:[0x641] attr:[0x7]
+```
+#### queryaliasmem
+エイリアスに所属するメンバーを問い合わせる  
+`Usage: queryaliasmem builtin|domain rid [access mask]`
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryaliasmem domain 0x23c" 10.10.241.53
+        sid:[S-1-5-21-3591857110-2884097990-301047963-502]
+        sid:[S-1-5-21-3591857110-2884097990-301047963-516]
+        sid:[S-1-5-21-3591857110-2884097990-301047963-518]
+        sid:[S-1-5-21-3591857110-2884097990-301047963-519]
+        sid:[S-1-5-21-3591857110-2884097990-301047963-517]
+        sid:[S-1-5-21-3591857110-2884097990-301047963-512]
+        sid:[S-1-5-21-3591857110-2884097990-301047963-520]
+        sid:[S-1-5-21-3591857110-2884097990-301047963-521]
 ```
 #### querydispinfo
 ユーザー情報の一覧を表示する
