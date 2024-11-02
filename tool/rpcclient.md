@@ -452,6 +452,28 @@ DsGetDcName gave:     info: struct netr_DsRGetDCNameInfo
         client_site_name         : *
             client_site_name         : 'Default-First-Site-Name'
 ```
+#### dsr_getsitename
+サイト名の取得  
+`Usage: dsr_getsitename computername`
+``` zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "dsr_getsitename attacktivedirectory.spookysec.local" 10.10.241.53
+Computer attacktivedirectory.spookysec.local is on Site: Default-First-Site-Name
+```
+#### dsr_enumtrustdom
+信頼済みドメインの列挙
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "dsr_enumtrustdom" 10.10.241.53                   
+1 domains returned
+spookysec.local (THM-AD)
+```
+#### dsenumdomtrusts
+ADフォレスト内の全信頼済みドメインの列挙
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "dsenumdomtrusts" 10.10.241.53
+1 domains returned
+spookysec.local (THM-AD)
+```
+
 
 https://www.hackingarticles.in/active-directory-enumeration-rpcclient/
 ### IPC$について  
