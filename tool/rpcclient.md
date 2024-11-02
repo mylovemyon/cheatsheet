@@ -46,10 +46,33 @@ Deprecated legacy options:
 Version options:
   -V, --version                                Print version
 ```
+TryHackmeのAttacktive Directoryで実施
+```
 └─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "lsaquery" 10.10.165.140
 Domain Name: THM-AD
 Domain Sid: S-1-5-21-3591857110-2884097990-301047963
-
+```
+TryHackmeのAttacktive Directoryで実施
+```
+└─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "querydispinfo" 10.10.165.140 
+index: 0xfc1 RID: 0x641 acb: 0x00000210 Account: a-spooks       Name: Admin Spooks      Desc: (null)
+index: 0xeda RID: 0x1f4 acb: 0x00000210 Account: Administrator  Name: (null)    Desc: Built-in account for administering the computer/domain
+index: 0xfc0 RID: 0x45e acb: 0x00000210 Account: backup Name: backup    Desc: (null)
+index: 0xfae RID: 0x450 acb: 0x00000210 Account: breakerofthings        Name: Ashu BreakerOfThings      Desc: (null)
+index: 0xfb2 RID: 0x454 acb: 0x00000210 Account: darkstar       Name: Jon Darkstar      Desc: (null)
+index: 0xedb RID: 0x1f5 acb: 0x00000215 Account: Guest  Name: (null)    Desc: Built-in account for guest access to the computer/domain
+index: 0xfb7 RID: 0x459 acb: 0x00000210 Account: horshark       Name: horshark  Desc: (null)
+index: 0xfaf RID: 0x451 acb: 0x00000210 Account: james  Name: James Ninja       Desc: (null)
+index: 0xf0f RID: 0x1f6 acb: 0x00020011 Account: krbtgt Name: (null)    Desc: Key Distribution Center Service Account
+index: 0xfb6 RID: 0x458 acb: 0x00000210 Account: Muirland       Name: Muirland Oracle   Desc: (null)
+index: 0xfb0 RID: 0x452 acb: 0x00000210 Account: optional       Name: root optional     Desc: (null)
+index: 0xfb3 RID: 0x455 acb: 0x00000210 Account: Ori    Name: Ori       Desc: (null)
+index: 0xfb5 RID: 0x457 acb: 0x00000210 Account: paradox        Name: Par Adox  Desc: (null)
+index: 0xfb4 RID: 0x456 acb: 0x00000210 Account: robin  Name: Robin     Desc: (null)
+index: 0xfb1 RID: 0x453 acb: 0x00000210 Account: sherlocksec    Name: Dan SherlockSec   Desc: (null)
+index: 0xfad RID: 0x44f acb: 0x00000210 Account: skidy  Name: Ben Skidy Desc: (null)
+index: 0xfb8 RID: 0x45a acb: 0x00010210 Account: svc-admin      Name: svc admin Desc: (null)
+```
 
 IPC$について  
 WindowsXP以前まではIPC$すなわちNullセッションから特定の操作ができた。  
