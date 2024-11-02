@@ -1,3 +1,4 @@
+## help
 ```
 Usage: rpcclient [OPTION...] BINDING-STRING|HOST
 Options:
@@ -46,13 +47,32 @@ Deprecated legacy options:
 Version options:
   -V, --version                                Print version
 ```
-TryHackmeのAttacktive Directoryで実施
+
+## -c
+TryHackmeの[Attacktive Directory](https://tryhackme.com/r/room/attacktivedirectory)でお試し  
+backupユーザはドメインユーザ権限のみをもつ（Domain Admin権限はなし）
+### lsaquery
+ドメイン名やドメインSIDを取得
 ```
 └─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "lsaquery" 10.10.165.140
 Domain Name: THM-AD
 Domain Sid: S-1-5-21-3591857110-2884097990-301047963
 ```
-TryHackmeのAttacktive Directoryで実施
+### lookupsids
+SID からユーザー名を解決する
+```
+└─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
+S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (1)
+```
+
+### lookupnames
+ユーザー名から SID を解決する
+```
+└─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "lookupnames administrator" 10.10.165.140 
+administrator S-1-5-21-3591857110-2884097990-301047963-500 (User: 1)
+```
+
+### 
 ```
 └─$ rpcclient -W "spookysec.local" -U "backup"%"backup2517860" -c "querydispinfo" 10.10.165.140 
 index: 0xfc1 RID: 0x641 acb: 0x00000210 Account: a-spooks       Name: Admin Spooks      Desc: (null)
