@@ -51,44 +51,46 @@ Version options:
 ## -c
 TryHackmeの[Attacktive Directory](https://tryhackme.com/r/room/attacktivedirectory)でお試し  
 backupユーザはドメインユーザ権限のみをもつ（Domain Admin権限はなし）
-### lsaquery
+
+### lsarpc
+####lsaquery
 ドメイン名やドメインSIDを取得
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lsaquery" 10.10.165.140
 Domain Name: THM-AD
 Domain Sid: S-1-5-21-3591857110-2884097990-301047963
 ```
-### lookupsids
+#### lookupsids
 SID からユーザー名を解決
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
 S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (1)
 ```
-### lookupsids3
+#### lookupsids3
 lookupsidsコマンドと同じ機能らしいが、Administrator権限でもアクセス拒否され実行されなかった。
 ```zsh
 └─$ rpcclient -U "thm-ad/administrator"%"0e0363213e37b94221497260b0bcb4fc" --pw-nt-hash -c "lookupsids3 S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
 result was NT_STATUS_ACCESS_DENIED
 ```
-### lookupnames
+#### lookupnames
 ユーザー名から SID を解決
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lookupnames administrator" 10.10.165.140 
 administrator S-1-5-21-3591857110-2884097990-301047963-500 (User: 1)
 ```
-### lookupnames4
+#### lookupnames4
 lookupnamesコマンドと同じ機能らしいが、Administrator権限でもアクセス拒否され実行されなかった。
 ```zsh
 └─$ rpcclient -U "thm-ad/administrator"%"0e0363213e37b94221497260b0bcb4fc" --pw-nt-hash  -c "lookupnames4 administrator" 10.10.165.140 
 result was NT_STATUS_ACCESS_DENIED
 ```
-### enumtrust
+#### enumtrust
 信頼するドメインの一覧を表示
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumtrust" 10.10.165.140 
 
 ```
-### enumprivs
+#### enumprivs
 ユーザー権利の一覧を表示
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumprivs" 10.10.165.140 
@@ -130,6 +132,52 @@ SeTimeZonePrivilege             0:34 (0x0:0x22)
 SeCreateSymbolicLinkPrivilege           0:35 (0x0:0x23)
 SeDelegateSessionUserImpersonatePrivilege               0:36 (0x0:0x24)
 ```
+#### lsaenumsid
+LSA の SID の一覧を表示
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lsaenumsid" 10.10.165.140 
+found 20 SIDs
+
+S-1-5-90-0
+S-1-5-9
+S-1-5-82-3006700770-424185619-1745488364-794895919-4004696415
+S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420
+S-1-5-80-0
+S-1-5-6
+S-1-5-32-568
+S-1-5-32-559
+S-1-5-32-554
+S-1-5-32-551
+S-1-5-32-550
+S-1-5-32-549
+S-1-5-32-545
+S-1-5-32-544
+S-1-5-21-3591857110-2884097990-301047963-513
+S-1-5-21-3591857110-2884097990-301047963-512
+S-1-5-20
+S-1-5-19
+S-1-5-11
+S-1-1-0
+```
+
+### samr
+#### querydominfo
+ドメイン情報を問い合わせる  
+52のユーザ数だと分かる
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "querydominfo" 10.10.165.140                      
+Domain:         THM-AD
+Server:
+Comment:
+Total Users:    52
+Total Groups:   0
+Total Aliases:  16
+Sequence No:    1
+Force Logoff:   -1
+Domain Server State:    0x1
+Server Role:    ROLE_DOMAIN_PDC
+Unknown 3:      0x1
+```
 
 ### a
 ```zsh
@@ -153,7 +201,8 @@ index: 0xfad RID: 0x44f acb: 0x00000210 Account: skidy  Name: Ben Skidy Desc: (n
 index: 0xfb8 RID: 0x45a acb: 0x00010210 Account: svc-admin      Name: svc admin Desc: (null)
 ```
 
-IPC$について  
+https://www.hackingarticles.in/active-directory-enumeration-rpcclient/
+### IPC$について  
 WindowsXP以前まではIPC$すなわちNullセッションから特定の操作ができた。  
 以降は、Nullセッションはできるが権限はもたないようにデフォルトで設定されている（ポリシーやレジストリで）。  
 プログラム間通信の名前付きパイプのために使用され、恒久的にIPC$を削除することはできない。  
