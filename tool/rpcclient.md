@@ -380,6 +380,28 @@ DACL
                 Permissions: 0xf003f: WRITE_OWNER_ACCESS WRITE_DAC_ACCESS READ_CONTROL_ACCESS DELETE_ACCESS 
                 SID: S-1-5-32-544
 ```
+#### getdompwinfo
+ドメインパスワード情報を取得
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "getdompwinfo" 10.10.241.53                  
+min_password_length: 0
+password_properties: 0x00000000
+```
+#### getusrdompwinfo
+ドメインユーザパスワード情報を取得  
+`Usage: getusrdompwinfo rid`
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "getusrdompwinfo 0x1f4" 10.10.241.53
+    &info: struct samr_PwInfo
+        min_password_length      : 0x0000 (0)
+        password_properties      : 0x00000000 (0)
+               0: DOMAIN_PASSWORD_COMPLEX  
+               0: DOMAIN_PASSWORD_NO_ANON_CHANGE
+               0: DOMAIN_PASSWORD_NO_CLEAR_CHANGE
+               0: DOMAIN_PASSWORD_LOCKOUT_ADMINS
+               0: DOMAIN_PASSWORD_STORE_CLEARTEXT
+               0: DOMAIN_REFUSE_PASSWORD_CHANGE
+```
 
 https://www.hackingarticles.in/active-directory-enumeration-rpcclient/
 ### IPC$について  
