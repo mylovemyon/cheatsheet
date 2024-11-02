@@ -402,6 +402,13 @@ password_properties: 0x00000000
                0: DOMAIN_PASSWORD_STORE_CLEARTEXT
                0: DOMAIN_REFUSE_PASSWORD_CHANGE
 ```
+#### lookupdomain
+ドメイン名の検索  
+`Usage: lookupdomain domain_name`
+```
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lookupdomain thm-ad" 10.10.241.53
+SAMR_LOOKUP_DOMAIN: Domain Name: thm-ad Domain SID: S-1-5-21-3591857110-2884097990-301047963
+```
 
 https://www.hackingarticles.in/active-directory-enumeration-rpcclient/
 ### IPC$について  
