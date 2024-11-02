@@ -223,7 +223,7 @@ S-1-1-0
         rid:[0x641] attr:[0x7]
 ```
 #### queryuseraliases
-エイリアスに所属するメンバーを問い合わせる
+エイリアスに所属するメンバーを問い合わせる  
 `Usage: queryuseraliases builtin|domain sid1 sid2`
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryuseraliases domain S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
@@ -312,7 +312,7 @@ group:[DnsUpdateProxy] rid:[0x44e]
 group:[dc] rid:[0x45d]
 ```
 #### enumalsgruups
-エイリアスグループ(ローカルグループ)を一覧表示する
+エイリアスグループ(ローカルグループ)を一覧表示する  
 `Usage: enumalsgroups builtin|domain [access mask] [max_size]`
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumalsgroups domain" 10.10.241.53
