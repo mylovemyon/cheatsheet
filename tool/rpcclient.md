@@ -311,7 +311,18 @@ group:[Enterprise Key Admins] rid:[0x20f]
 group:[DnsUpdateProxy] rid:[0x44e]
 group:[dc] rid:[0x45d]
 ```
-
+#### enumalsgruups
+エイリアスグループ(ローカルグループ)を一覧表示する
+`Usage: enumalsgroups builtin|domain [access mask] [max_size]`
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "enumalsgroups domain" 10.10.241.53
+group:[Cert Publishers] rid:[0x205]
+group:[RAS and IAS Servers] rid:[0x229]
+group:[Allowed RODC Password Replication Group] rid:[0x23b]
+group:[Denied RODC Password Replication Group] rid:[0x23c]
+group:[DnsAdmins] rid:[0x44d]
+group:[CompStaff] rid:[0x45c]
+```
 ### a
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "querydispinfo" 10.10.165.140 
