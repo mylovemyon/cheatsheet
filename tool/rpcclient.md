@@ -192,9 +192,18 @@ S-1-1-0
         padding1[0..7]...
         logon_hrs[0..21]...
 ```
+#### querygroup
+グループ情報を問い合わせる
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "querygroup 0x201" 10.10.165.140 
+        Group Name:     Domain Users
+        Description:    All domain users
+        Group Attribute:7
+        Num Members:16
+```
 #### queryusergroups
 ユーザーが所属するグループを問い合わせる
-```
+```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryusergroups 0x1f4" 10.10.165.140 
         group rid:[0x207] attr:[0x7]
         group rid:[0x201] attr:[0x7]
