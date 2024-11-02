@@ -330,6 +330,13 @@ group:[CompStaff] rid:[0x45c]
 name:[THM-AD] idx:[0x0]
 name:[Builtin] idx:[0x0]
 ```
+#### samlookupnames
+名前を検索する。完全一致でないと検索がヒットしなさそう
+`Usage: samlookupnames  domain|builtin name1 [name2 [name3] [...]]`
+```zsh
+└─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "samlookupnames domain administrator" 10.10.241.53
+name administrator: 0x1f4 (1)
+```
 
 https://www.hackingarticles.in/active-directory-enumeration-rpcclient/
 ### IPC$について  
