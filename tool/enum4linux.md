@@ -103,7 +103,8 @@ my $command = "rpcclient -W '$global_workgroup' -c querydispinfo -U'$global_user
 ```perl
 $command = "rpcclient -W '$global_workgroup' -c enumdomusers -U'$global_username'\%'$global_password' -d 10 '$global_target' 2>&1";
 ```
-`-d`も引数である場合、先程のコマンドで取得したRIDを用いて「queryuser」で各ユーザの詳細を調査
+`-d`も引数である場合、先程のコマンドで取得したRIDを用いて「queryuser」で各ユーザの詳細を調査  
+「acb_info」を整形して出力するのでわかりやすい
 ```perl
 foreach my $rid (keys %rids) {
 	get_user_details_from_rid($rid);
