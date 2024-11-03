@@ -96,10 +96,23 @@ my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_p
 `rpcclient`で「lsaquery」を実行しドメインのSIDを取得。取得したSIDからドメインに加入しているかどうか判別。
 
 ## [-U](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L1014)
-rpcclientの「querydispinfo」「enumdomusers」で
+rpcclientの「querydispinfo」「enumdomusers」でユーザ列挙
 ```perl
-
-
+my $command = "rpcclient -W '$global_workgroup' -c querydispinfo -U'$global_username'\%'$global_password' -d 10 '$global_target' 2>&1";
+```
+```perl
+$command = "rpcclient -W '$global_workgroup' -c enumdomusers -U'$global_username'\%'$global_password' -d 10 '$global_target' 2>&1";
+```
+`-d`がある場合、先程のコマンドで取得したRIDを用いて「queryuser」で各ユーザの詳細を調査
+```perl
+foreach my $rid (keys %rids) {
+	get_user_details_from_rid($rid);
+```
+```perl
+sub get_user_details_from_rid {
+~~~
+	return unless $global_detailed;
+	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' -c 'queryuser $rid' '$global_target' 2>&1";
 ```
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
