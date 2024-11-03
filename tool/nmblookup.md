@@ -1,3 +1,5 @@
+https://www.samba.org/samba/docs/4.9/man-html/nmblookup.1.html
+## -h
 ```
 Usage: [-?fMSTrAV] [-?|--help] [--usage] [-B|--broadcast=BROADCAST-ADDRESS] [-f|--flags] [-U|--unicast=STRING] [-M|--master-browser] [--recursion]
         [-S|--status] [-T|--translate] [-r|--root-port] [-A|--lookup-by-ip] [-d|--debuglevel=DEBUGLEVEL] [--debug-stdout] [-s|--configfile=CONFIGFILE]
@@ -6,7 +8,7 @@ Usage: [-?fMSTrAV] [-?|--help] [--usage] [-B|--broadcast=BROADCAST-ADDRESS] [-f|
         [--realm=REALM] [-V|--version] <NODE> ..
 ```
 
-## -Aオプション
+## -A
 UDP137番ポートに対して、ノードステータスの問い合わせを実行。  
 MACアドレスも取得できる。  
 TryHackMeの[Bule](https://tryhackme.com/r/room/blue)でお試し
