@@ -142,6 +142,7 @@ my $command = "smbclient -W '$global_workgroup' -L //'$global_target' -U'$global
 my $command = "smbclient -W '$global_workgroup' //'$global_target'/'$share' -U'$global_username'\%'$global_password' -c dir 2>&1";
 ```
 `-A`も引数である場合、ディレクトリを作成し書き込み権限も確認する
+ディレクトリが作成されれば、削除も行う
 ```perl
 $command = "smbclient -W '$global_workgroup' //'$global_target'/'$share' -U'$global_username'\%'$global_password' -c 'mkdir $random_string' 2>&1";
 ```
