@@ -104,7 +104,7 @@ my $command = "rpcclient -W '$global_workgroup' -c querydispinfo -U'$global_user
 $command = "rpcclient -W '$global_workgroup' -c enumdomusers -U'$global_username'\%'$global_password' -d 10 '$global_target' 2>&1";
 ```
 `-d`も引数である場合、先程のコマンドで取得したRIDを用いて「queryuser」で各ユーザの詳細を調査  
-「acb_info」を整形して出力するのでわかりやすい
+「acb_info」を整形して人に分かりやすい形式で出力するのでわかりやすい
 ```perl
 foreach my $rid (keys %rids) {
 	get_user_details_from_rid($rid);
@@ -129,6 +129,21 @@ sub enum_machines {
         print_heading("Machine Enumeration on $global_target");
         print_error("Not implemented in this version of enum4linux.\n");
 }
+```
+
+
+## [-S](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L711)
+smbclientで共有を列挙（smbclientでは、NTハッシュでのログインができるがこれは対応していない）
+```perl
+my $command = "smbclient -W '$global_workgroup' -L //'$global_target' -U'$global_username'\%'$global_password' 2>&1";
+```
+列挙した共有にアクセス・コマンド実行しログインユーザのマッピング・読み取り権限を確認する
+```perl
+my $command = "smbclient -W '$global_workgroup' //'$global_target'/'$share' -U'$global_username'\%'$global_password' -c dir 2>&1";
+```
+`-A`も引数である場合、ディレクトリを作成し書き込み権限も確認する
+```perl
+$command = "smbclient -W '$global_workgroup' //'$global_target'/'$share' -U'$global_username'\%'$global_password' -c 'mkdir $random_string' 2>&1";
 ```
 
 
