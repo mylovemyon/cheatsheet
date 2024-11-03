@@ -122,6 +122,7 @@ sub get_user_details_from_rid {
 	}
 ```
 
+
 ## [-M](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L557)
 Kaliに入っているenum4linuxは、対応してなさそう
 ```perl
@@ -147,6 +148,14 @@ my $command = "smbclient -W '$global_workgroup' //'$global_target'/'$share' -U'$
 $command = "smbclient -W '$global_workgroup' //'$global_target'/'$share' -U'$global_username'\%'$global_password' -c 'mkdir $random_string' 2>&1";
 ```
 
+
+## [-P](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L508)
+polenumとrpcclientを使用してパスワードポリシーの取得（polenumのほうが、取得できる情報量が多い）
+```perl
+my $command = "polenum '$global_username':'$global_password'\@'$global_target' 2>&1";
+~~~
+$command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c \"getdompwinfo\" 2>&1";
+```
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
