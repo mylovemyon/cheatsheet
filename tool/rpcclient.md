@@ -164,8 +164,8 @@ S-1-1-0
 ### samr
 #### queryuser
 ユーザー情報を問い合わせる。コマンドではユーザ名でも問い合わせられる。  
-「acb_info」にはアカウントの有効状態やパスワードの期限切れなどの情報があり、enum4linuxの[コード](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L1095)から確認できる
-```Usage: queryuser rid [info level] [access mask] ```
+「acb_info」にはアカウントの有効状態やパスワードの期限切れなどの情報があり、enum4linuxの[コード](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L1095)から確認できる  
+`Usage: queryuser rid [info level] [access mask] `
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "queryuser administrator" 10.10.165.140 
         User Name   :   Administrator
@@ -384,7 +384,7 @@ DACL
 ```
 #### getdompwinfo
 ドメインパスワード情報を取得  
-enum4linuxの[コード](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L537)でレスポンスの詳細を確認できる
+enum4linuxの[コード](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L537)からレスポンスの詳細を確認できる
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "getdompwinfo" 10.10.241.53                  
 min_password_length: 0
