@@ -383,7 +383,8 @@ DACL
                 SID: S-1-5-32-544
 ```
 #### getdompwinfo
-ドメインパスワード情報を取得
+ドメインパスワード情報を取得  
+enum4linuxの[コード](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L537)でレスポンスの詳細を確認できる
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "getdompwinfo" 10.10.241.53                  
 min_password_length: 0
