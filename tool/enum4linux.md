@@ -99,8 +99,7 @@ my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_p
 rpcclientの「querydispinfo」「enumdomusers」でユーザ列挙
 ```perl
 my $command = "rpcclient -W '$global_workgroup' -c querydispinfo -U'$global_username'\%'$global_password' -d 10 '$global_target' 2>&1";
-```
-```perl
+~~~
 $command = "rpcclient -W '$global_workgroup' -c enumdomusers -U'$global_username'\%'$global_password' -d 10 '$global_target' 2>&1";
 ```
 `-d`も引数である場合、先程のコマンドで取得したRIDを用いて「queryuser」で各ユーザの詳細を調査  
