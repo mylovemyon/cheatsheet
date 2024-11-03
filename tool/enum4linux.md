@@ -114,6 +114,12 @@ sub get_user_details_from_rid {
 ~~~
 	return unless $global_detailed;
 	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' -c 'queryuser $rid' '$global_target' 2>&1";
+~~~
+	if ($acb_int & 0x00000001) {
+	printf $pad . "%-25.25s: %s\n", "Account Disabled", "True";
+	} else {
+	printf $pad . "%-25.25s: %s\n", "Account Disabled", "False";
+	}
 ```
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
