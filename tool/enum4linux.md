@@ -95,6 +95,7 @@ my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_p
 ```
 `rpcclient`で「lsaquery」を実行しドメインのSIDを取得。取得したSIDからドメインに加入しているかどうか判別。
 
+
 ## [-U](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L1014)
 rpcclientの「querydispinfo」「enumdomusers」でユーザ列挙
 ```perl
@@ -120,6 +121,16 @@ sub get_user_details_from_rid {
 	printf $pad . "%-25.25s: %s\n", "Account Disabled", "False";
 	}
 ```
+
+## [-M](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L557)
+Kaliに入っているenum4linuxは、対応してなさそう
+```perl
+sub enum_machines {
+        print_heading("Machine Enumeration on $global_target");
+        print_error("Not implemented in this version of enum4linux.\n");
+}
+```
+
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
