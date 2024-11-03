@@ -1,3 +1,4 @@
+https://www.samba.org/samba/docs/4.17/man-html/rpcclient.1.html
 ## help
 ```
 Usage: rpcclient [OPTION...] BINDING-STRING|HOST
