@@ -477,8 +477,8 @@ spookysec.local (THM-AD)
 
 ### winreg
 #### querymultiplevalues
-レジストリの複数の値を問い合わせる
-[ソース](https://github.com/samba-team/samba/blob/e4e3f05cd7d6fdc98a24f592a099f7d24136788d/source3/rpcclient/cmd_winreg.c#L173)をみるとOpenHKLMで接続しているので、HKLM配下のサブキーの値しか確認できなさそう？(HKCUとかは無理？)  
+レジストリの複数の値を問い合わせる  
+[ソース](https://github.com/samba-team/samba/blob/e4e3f05cd7d6fdc98a24f592a099f7d24136788d/source3/rpcclient/cmd_winreg.c#L173)をみるとOpenHKLMで接続しているので、HKLM配下のサブキーの値しか確認できない(HKCUとかは無理)  
 `usage: querymultiplevalues [key] [value1] [value2] ...`
 ```zsh
 └─$ rpcclient -U "thm-ad/administrator"%"0e0363213e37b94221497260b0bcb4fc" --pw-nt-hash -c "querymultiplevalues 'SYSTEM\CurrentControlSet\Control\Lsa' 'restrictanonymous' " 10.10.185.151
