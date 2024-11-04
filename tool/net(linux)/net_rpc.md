@@ -116,7 +116,7 @@ net rpc audit set <category> <policy>    Set Auditing policies
 ```
 audit listはユーザ権限ではアクセス拒否された
 ```zsh
-└─$ net rpc audit list -U thm-ad/administrator%0e0363213e37b94221497260b0bcb4fc --pw-nt-hash -I 10.10.131.84
+└─$ net rpc audit list -U "thm-ad"/"administrator"%"0e0363213e37b94221497260b0bcb4fc" --pw-nt-hash -I 10.10.131.84
 Auditing:               Enabled
 Auditing categories:    9
 Auditing settings:
@@ -134,8 +134,8 @@ Auditing settings:
 
 ## info
 rpcclientの「querydominfo」と似ている
-```
-└─$ net rpc info -U thm-ad/backup%backup2517860 -I 10.10.131.84
+```zsh
+└─$ net rpc info -U "thm-ad"/"backup"%"backup2517860" -I 10.10.131.84
 Domain Name: THM-AD
 Domain SID: S-1-5-21-3591857110-2884097990-301047963
 Sequence number: 1
