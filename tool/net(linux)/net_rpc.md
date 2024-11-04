@@ -110,6 +110,7 @@ net rpc audit enable          Enable auditing
 net rpc audit disable         Disable auditing
 net rpc audit list            List configured auditing settings
 ```
+audit listはユーザ権限ではアクセス拒否された
 ```zsh
 └─$ net rpc audit list -U thm-ad/administrator%0e0363213e37b94221497260b0bcb4fc --pw-nt-hash -I 10.10.131.84
 Auditing:               Enabled
