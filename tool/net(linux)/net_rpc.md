@@ -1,3 +1,4 @@
+## help
 ```
 Usage:
 net rpc audit           Modify global audit settings
@@ -24,7 +25,6 @@ net rpc shell           Open interactive shell on remote server
 net rpc trust           Manage trusts
 net rpc conf            Configure a remote samba server
 ```
-
 ```
 net [<method>] group [misc. options] [targets]
         List user groups
@@ -98,4 +98,30 @@ Valid credential options are:
         -C or --comment=<comment>       descriptive comment (for add only)
         -c or --container=<container>   LDAP container, defaults to cn=Users (for add in ADS only)
         -L or --localgroup              When adding groups, create a local group (alias)
+```
+## audit
+TryHackmeの[Attacktive Directory](https://tryhackme.com/r/room/attacktivedirectory)でお試し
+backupユーザはドメインユーザ権限のみをもつ（Domain Admin権限はなし）
+```
+Usage:
+net rpc audit get             View configured auditing settings
+net rpc audit set             Set auditing policies
+net rpc audit enable          Enable auditing
+net rpc audit disable         Disable auditing
+net rpc audit list            List configured auditing settings
+```
+```zsh
+└─$ net rpc audit list -U thm-ad/administrator%0e0363213e37b94221497260b0bcb4fc --pw-nt-hash -I 10.10.131.84
+Auditing:               Enabled
+Auditing categories:    9
+Auditing settings:
+        System Events                 None
+        Logon events                  None
+        Object Access                 None
+        Privilege Use                 None
+        Process Tracking              None
+        Policy Change                 None
+        Account Management            None
+        Directory service access      None
+        Account logon events          None
 ```
