@@ -99,6 +99,7 @@ Valid credential options are:
         -c or --container=<container>   LDAP container, defaults to cn=Users (for add in ADS only)
         -L or --localgroup              When adding groups, create a local group (alias)
 ```
+
 ## audit
 TryHackmeの[Attacktive Directory](https://tryhackme.com/r/room/attacktivedirectory)でお試し
 backupユーザはドメインユーザ権限のみをもつ（Domain Admin権限はなし）
@@ -125,4 +126,17 @@ Auditing settings:
         Account Management            None
         Directory service access      None
         Account logon events          None
+```
+
+
+## info
+rpcclientの「querydominfo」と似ている
+```
+└─$ net rpc info -U thm-ad/backup%backup2517860 -I 10.10.131.84
+Domain Name: THM-AD
+Domain SID: S-1-5-21-3591857110-2884097990-301047963
+Sequence number: 1
+Num users: 52
+Num domain groups: 0
+Num local groups: 16
 ```
