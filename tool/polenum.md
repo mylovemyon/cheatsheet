@@ -6,7 +6,8 @@ Usage:
 
 example: polenum aaa:bbb@127.0.0.1
 ```
-TryHackMeの[AttacktiveDirectory](https://tryhackme.com/r/room/attacktivedirectory)でお試し
+TryHackMeの[AttacktiveDirectory](https://tryhackme.com/r/room/attacktivedirectory)でお試し  
+backupユーザはドメインユーザ権限のみをもつ（Domain Admin権限はなし）
 ```zsh
 └─$ polenum backup:backup2517860@10.10.167.255
 
