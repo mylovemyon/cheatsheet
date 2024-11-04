@@ -101,15 +101,18 @@ Valid credential options are:
 ```
 
 ## audit
-TryHackmeの[Attacktive Directory](https://tryhackme.com/r/room/attacktivedirectory)でお試し
+TryHackmeの[Attacktive Directory](https://tryhackme.com/r/room/attacktivedirectory)でお試し  
 backupユーザはドメインユーザ権限のみをもつ（Domain Admin権限はなし）
 ```
 Usage:
-net rpc audit get             View configured auditing settings
-net rpc audit set             Set auditing policies
-net rpc audit enable          Enable auditing
-net rpc audit disable         Disable auditing
-net rpc audit list            List configured auditing settings
+net rpc audit list                       View configured Auditing policies
+net rpc audit enable                     Enable Auditing
+net rpc audit disable                    Disable Auditing
+net rpc audit get <category>             View configured Auditing policy setting
+net rpc audit set <category> <policy>    Set Auditing policies
+
+        category can be one of: SYSTEM, LOGON, OBJECT, PRIVILEGE, PROCESS, POLICY, SAM, DIRECTORY or ACCOUNT
+        policy can be one of: SUCCESS, FAILURE, ALL or NONE
 ```
 audit listはユーザ権限ではアクセス拒否された
 ```zsh
