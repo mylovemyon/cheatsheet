@@ -162,7 +162,7 @@ foreach my $grouptype ("builtin", "domain") {
 	# Get list of groups
 	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'enumalsgroups $grouptype' 2>&1";
 ```
-net rpcコマンドで
+net rpcコマンドで各グループに所属するユーザを問い合わせる
 ```perl
 $command = "net rpc group members '$groupname' -W '$global_workgroup' -I '$global_target' -U'$global_username'\%'$global_password' 2>&1\n";
 ```
