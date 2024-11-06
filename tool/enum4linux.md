@@ -1,7 +1,4 @@
 https://github.com/CiscoCXSecurity/enum4linux  
-Perlで実装  
-https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/managing-rid-issuance
-
 
 ## help
 ```
@@ -87,7 +84,7 @@ nmblookupで取得できない場合は、`dig`で取得するがそれでも取
 ```perl
 my $command = "smbclient -W '$global_workgroup' //'$global_target'/ipc\$ -U'$global_username'\%'$global_password' -c 'help' 2>&1";
 ```
-`smbclient`でNullセッションか指定したクレデンシャルで＄IPCに接続できるか確認している。  
+`smbclient`でNullセッションか指定したクレデンシャルでIPC$に接続できるか確認している。  
 NullセッションはWindowsXP以降ではデフォルトで無効にされている（詳細はrpcclient.md）。
 ### [get_domain_sid()](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L366)
 ```perl
@@ -134,7 +131,7 @@ sub enum_machines {
 
 
 ## [-S](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L711)
-smbclientで共有を列挙（smbclientでは、NTハッシュでのログインができるがこれは対応していない）
+smbclientの「-L」で共有を列挙（smbclientでは、NTハッシュでのログインができるがこれは対応していない）
 ```perl
 my $command = "smbclient -W '$global_workgroup' -L //'$global_target' -U'$global_username'\%'$global_password' 2>&1";
 ```
@@ -150,12 +147,26 @@ $command = "smbclient -W '$global_workgroup' //'$global_target'/'$share' -U'$glo
 
 
 ## [-P](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L508)
-polenumとrpcclientを使用してパスワードポリシーの取得（polenumのほうが、取得できる情報量が多い）
+polenumとrpcclientの「getdompwinfo」でパスワードポリシーの取得（polenumのほうが、取得できる情報量が多い）
 ```perl
 my $command = "polenum '$global_username':'$global_password'\@'$global_target' 2>&1";
 ~~~
 $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c \"getdompwinfo\" 2>&1";
 ```
+
+
+## [-G](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L612)
+rpcclientの「enumalsgroups」でローカル・グローバルグループの列挙
+```perl
+foreach my $grouptype ("builtin", "domain") {
+	# Get list of groups
+	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'enumalsgroups $grouptype' 2>&1";
+```
+net rpcコマンドで
+```perl
+$command = "net rpc group members '$groupname' -W '$global_workgroup' -I '$global_target' -U'$global_username'\%'$global_password' 2>&1\n";
+```
+
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
