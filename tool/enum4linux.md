@@ -177,7 +177,7 @@ foreach my $known_username (@global_known_usernames) {
 ```
 取得したSIDからRIDを除いたものを出力している  
 カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは認識できない  
-あんま使い勝手は良くなさそう
+なぜenum4linuxがこの仕様なのかわからないがあんま使い勝手は良くなさそう
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
