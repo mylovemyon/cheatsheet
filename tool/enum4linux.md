@@ -175,7 +175,9 @@ rpcclientの「lookupnames」で指定ユーザのSIDを問い合わせる
 foreach my $known_username (@global_known_usernames) {
 	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupnames $known_username' 2>&1";
 ```
-なぜか取得したSIDからRIDを除いたものを出力しており、かつ２回以上発見したSIDを出力している（なぜ１回目は出力しないのかは謎）
+取得したSIDからRIDを除いたものを出力している  
+カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは認識できない  
+あんま使い勝手は良くなさそう
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
