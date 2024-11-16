@@ -195,10 +195,14 @@ if (! defined($sid) and $global_username) {
 foreach my $rid ($start_rid..$end_rid) {
 	my $output = `rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupsids $sid-$rid' 2>&1`;
 ```
-「lookupsids」のコマンド結果の最後に「(1)」などの情報があり、その文字列を置換する。
+「lookupsids」のコマンド結果の最後に「(1)」などの情報があり、その文字列を置換して出力する。
 ```perl
-# (1)の場合、ローカルユーザを表す
+# コマンド結果の最後が(1)の場合、そのSIDはローカルユーザを表す
 $sid_and_user =~ s/\(1\)/(Local User)/;
+$sid_and_user =~ s/\(2\)/(Domain Group)/;
+~~~
+print "$sid_and_user\n" if $sid_and_user =~ /\((Local|Domain) User\)/;
+print "$sid_and_user\n" if $sid_and_user =~ /\((Local|Domain) Group\)/;
 ```
 
 
