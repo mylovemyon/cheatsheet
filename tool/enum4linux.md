@@ -190,7 +190,7 @@ if (! defined($sid) and $global_username) {
 取得したSIDに対し、RIDサイクルを実施する  
 問い合わせるRIDの範囲はデフォルトでは、「500-550,1000-1050」（`-R`で範囲を指定できる）  
 また`-K`が指定されている場合、最後のRID範囲の終値を「999999」に設定する  
-（ようするに失敗するまで無限に問い合わせる、しかし`-K`を指定している場合1000回以上SID取得失敗するとRIDサイクルが終了する）
+（ようするに失敗するまで無限に問い合わせる、しかし`-K`を指定している場合1000回連続でSID取得失敗するとRIDサイクルが終了する）
 ```perl
 foreach my $rid ($start_rid..$end_rid) {
 	my $output = `rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupsids $sid-$rid' 2>&1`;
