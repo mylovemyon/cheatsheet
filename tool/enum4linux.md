@@ -188,6 +188,12 @@ if (! defined($sid) and $global_username) {
 ~~~~
 	my $command = "rpcclient -W '$global_workgroup' -U% '$global_target' -c 'lookupnames $known_username' 2>&1";
 ```
+取得したSIDに対し、RIDサイクルを実施する  
+問い合わせるRIDの範囲はデフォルトでは、500-550,1000-1050（`-R`で指定できる）  
+```perl
+foreach my $rid ($start_rid..$end_rid) {
+	my $output = `rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupsids $sid-$rid' 2>&1`;
+```
 
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
