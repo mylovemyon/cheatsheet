@@ -62,7 +62,8 @@ Domain Name: THM-AD
 Domain Sid: S-1-5-21-3591857110-2884097990-301047963
 ```
 #### lookupsids
-SID からユーザー名を解決
+SID からユーザー名を解決  
+(1)はドメインユーザを表す。他についてはenum4linuxの[コード](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L986C6-L986C45)から確認できる 
 ```zsh
 └─$ rpcclient -U "thm-ad/backup"%"backup2517860" -c "lookupsids S-1-5-21-3591857110-2884097990-301047963-500" 10.10.165.140 
 S-1-5-21-3591857110-2884097990-301047963-500 THM-AD\Administrator (1)
