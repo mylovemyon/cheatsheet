@@ -172,14 +172,14 @@ $command = "net rpc group members '$groupname' -W '$global_workgroup' -I '$globa
 rpcclientの「lookupnames」で指定ユーザのSIDを問い合わせる  
 `-k`でユーザ名が指定されいなければ、デフォルトで`administrator,guest,krbtgt,domain admins,root,bin,non`の８ユーザ  
 また、取得したSIDからRIDを除いたものを出力している  
-カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは認識できない  
+カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは確認できない  
 なぜenum4linuxがこの仕様なのかわからないがあんま使い勝手は良くなさそう
 ```perl
 foreach my $known_username (@global_known_usernames) {
 	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupnames $known_username' 2>&1";
 ```
 さらにrpcclientの「lsaenumsid」でLSAのSIDを問い合わせる  
-これもまたカウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは認識できない  
+これもまたカウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは確認できない  
 ```perl
 my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c lsaenumsid 2>&1";
 ```
