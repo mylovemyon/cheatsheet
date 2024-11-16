@@ -195,6 +195,11 @@ if (! defined($sid) and $global_username) {
 foreach my $rid ($start_rid..$end_rid) {
 	my $output = `rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupsids $sid-$rid' 2>&1`;
 ```
+「lookupsids」のコマンド結果の最後に「(1)」などの情報があり、その文字列を置換する。
+```perl
+# (1)の場合、ローカルユーザを表す
+$sid_and_user =~ s/\(1\)/(Local User)/;
+```
 
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
