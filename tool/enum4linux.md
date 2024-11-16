@@ -171,8 +171,7 @@ $command = "net rpc group members '$groupname' -W '$global_workgroup' -I '$globa
 ## [-r](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L832)
 rpcclientの「lookupnames」で指定ユーザのSIDを問い合わせる  
 `-k`でユーザ名が指定されいなければ、デフォルトで`administrator,guest,krbtgt,domain admins,root,bin,non`の８ユーザ  
-また、取得したSIDからRIDを除いたものを出力している  
-カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは確認できない  
+カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは出力されない  
 なぜenum4linuxがこの仕様なのかわからないがあんま使い勝手は良くなさそう
 ```perl
 my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupnames $known_username' 2>&1";
@@ -189,7 +188,8 @@ if (! defined($sid) and $global_username) {
 	my $command = "rpcclient -W '$global_workgroup' -U% '$global_target' -c 'lookupnames $known_username' 2>&1";
 ```
 取得したSIDに対し、RIDサイクルを実施する  
-問い合わせるRIDの範囲はデフォルトでは、500-550,1000-1050（`-R`で指定できる）  
+問い合わせるRIDの範囲はデフォルトでは、500-550,1000-1050（`-R`で範囲を指定できる）  
+また`-K`が指定されている場合、最後のRID範囲の終値を999999に設定する（`-R`指定せず-Kを指定すると、「500-550,1000-999999」になる）
 ```perl
 foreach my $rid ($start_rid..$end_rid) {
 	my $output = `rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupsids $sid-$rid' 2>&1`;
