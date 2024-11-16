@@ -175,13 +175,18 @@ rpcclientの「lookupnames」で指定ユーザのSIDを問い合わせる
 カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは確認できない  
 なぜenum4linuxがこの仕様なのかわからないがあんま使い勝手は良くなさそう
 ```perl
-foreach my $known_username (@global_known_usernames) {
-	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupnames $known_username' 2>&1";
+my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupnames $known_username' 2>&1";
 ```
 さらにrpcclientの「lsaenumsid」でLSAのSIDを問い合わせる  
 SIDのカウントは先程の「lookupnames」と合計して２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは確認できない  
 ```perl
 my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c lsaenumsid 2>&1";
+```
+これまでの２コマンドの結果、sidが取得できていない場合Nullセッションで指定ユーザのSIDを取得を問い合わせる
+```perl
+if (! defined($sid) and $global_username) {
+~~~~
+	my $command = "rpcclient -W '$global_workgroup' -U% '$global_target' -c 'lookupnames $known_username' 2>&1";
 ```
 
 
