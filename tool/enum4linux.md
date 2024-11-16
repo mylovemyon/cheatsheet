@@ -170,14 +170,20 @@ $command = "net rpc group members '$groupname' -W '$global_workgroup' -I '$globa
 
 ## [-r](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L832)
 rpcclientの「lookupnames」で指定ユーザのSIDを問い合わせる  
-`-k`でユーザ名が指定されいなければ、デフォルトで`administrator,guest,krbtgt,domain admins,root,bin,non`の８ユーザ
+`-k`でユーザ名が指定されいなければ、デフォルトで`administrator,guest,krbtgt,domain admins,root,bin,non`の８ユーザ  
+また、取得したSIDからRIDを除いたものを出力している  
+カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは認識できない  
+なぜenum4linuxがこの仕様なのかわからないがあんま使い勝手は良くなさそう
 ```perl
 foreach my $known_username (@global_known_usernames) {
 	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupnames $known_username' 2>&1";
 ```
-取得したSIDからRIDを除いたものを出力している  
-カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは認識できない  
-なぜenum4linuxがこの仕様なのかわからないがあんま使い勝手は良くなさそう
+さらにrpcclientの「lsaenumsid」でLSAのSIDを問い合わせる  
+これもまたカウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは認識できない  
+```perl
+my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c lsaenumsid 2>&1";
+```
+
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
