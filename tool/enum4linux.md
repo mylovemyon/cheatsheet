@@ -179,7 +179,7 @@ foreach my $known_username (@global_known_usernames) {
 	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c 'lookupnames $known_username' 2>&1";
 ```
 さらにrpcclientの「lsaenumsid」でLSAのSIDを問い合わせる  
-これもまたカウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは確認できない  
+SIDのカウントは先程の「lookupnames」と合計して２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは確認できない  
 ```perl
 my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c lsaenumsid 2>&1";
 ```
