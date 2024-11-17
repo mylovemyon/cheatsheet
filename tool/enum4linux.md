@@ -75,22 +75,22 @@ get_domain_sid();
 get_os_info()          if $opts{'o'};
 ```
 ### [get_workgroup()](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L384)
+`-w`オプションで手動でドメインが指定されていない場合は、`nmblookup`でドメインを取得する。  
+nmblookupで取得できない場合は、`dig`で取得するがそれでも取得できない場合はドメイン名に「WORKGROUP」を設定する。
 ```perl
 $global_workgroup = `nmblookup -A '$global_target'`; # Global var.  Erg!
 ```
-`-w`オプションで手動でドメインが指定されていない場合は、`nmblookup`でドメインを取得する。  
-nmblookupで取得できない場合は、`dig`で取得するがそれでも取得できない場合はドメイン名に「WORKGROUP」を設定する。
 ### [make_session()](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L452)
+`smbclient`でNullセッションか指定したクレデンシャルでIPC$に接続できるか確認している。  
+NullセッションはWindowsXP以降ではデフォルトで無効にされている（詳細はrpcclient.md）。
 ```perl
 my $command = "smbclient -W '$global_workgroup' //'$global_target'/ipc\$ -U'$global_username'\%'$global_password' -c 'help' 2>&1";
 ```
-`smbclient`でNullセッションか指定したクレデンシャルでIPC$に接続できるか確認している。  
-NullセッションはWindowsXP以降ではデフォルトで無効にされている（詳細はrpcclient.md）。
 ### [get_domain_sid()](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L366)
+`rpcclient`で「lsaquery」を実行しドメインのSIDを取得。取得したSIDからドメインに加入しているかどうか判別。
 ```perl
 my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' $global_target -c 'lsaquery' 2>&1";
 ```
-`rpcclient`で「lsaquery」を実行しドメインのSIDを取得。取得したSIDからドメインに加入しているかどうか判別。
 
 
 ## [-U](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L1014)
