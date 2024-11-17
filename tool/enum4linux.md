@@ -166,7 +166,10 @@ my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_p
 ~~~
 $command = "net rpc group members '$groupname' -W '$global_workgroup' -I '$global_target' -U'$global_username'\%'$global_password' 2>&1\n";
 ```
-
+さらに`-d`が指定されている場合、先程のコマンドで取得したRIDを用いてrpcclientの「querygroup」で各グループを調査
+```perl
+my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' -c 'querygroup $rid' '$global_target' 2>&1";
+```
 
 ## [-r](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L832)
 rpcclientの「lookupnames」で指定ユーザのSIDを問い合わせる  
