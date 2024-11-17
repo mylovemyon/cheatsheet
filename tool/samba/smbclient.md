@@ -1,5 +1,5 @@
 https://www.samba.org/samba/docs/current/man-html/smbclient.1.html
-## -h
+## -?
 ```
 Usage: smbclient [OPTIONS] service <password>
   -M, --message=HOST                           Send message
