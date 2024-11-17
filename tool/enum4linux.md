@@ -212,6 +212,12 @@ print "$sid_and_user\n" if $sid_and_user =~ /\((Local|Domain) Group\)/;
 ユーザの場合は、`-U`オプション同様 rpcclientの「queryuser」
 
 
+## [-l](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L416)
+```perl
+my $command = "ldapsearch -x -h '$global_target' -p 389 -s base namingContexts 2>&1";
+```
+
+
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
 ```perl
