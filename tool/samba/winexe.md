@@ -1,4 +1,4 @@
-
+https://www.samba.org/samba/docs/current/man-html/winexe.1.html
 ## -?
 ```
 Usage: winexe [OPTION]... //HOST[:PORT] COMMAND
@@ -41,3 +41,8 @@ Credential options:
 Version options:
   -V, --version                                Print version
 ```
+winexeを使えば、リモートでWindows上でコマンド実行できる。  
+ただWindowsのデフォルトの設定ではwinexeが機能する設定は有効になっていない。  
+https://qiita.com/yasumatk/items/86a740375465eea53f74  
+https://qiita.com/yasumatk/items/7daeacd93f8229f0d597  
+https://takuya-1st.hatenablog.jp/entry/2014/08/03/170845  
