@@ -103,18 +103,11 @@ $command = "rpcclient -W '$global_workgroup' -c enumdomusers -U'$global_username
 `-d`も引数である場合、先程のコマンドで取得したRIDを用いて「queryuser」で各ユーザの詳細を調査  
 「acb_info」を整形して人に分かりやすい形式で出力するのでわかりやすい
 ```perl
-foreach my $rid (keys %rids) {
-	get_user_details_from_rid($rid);
-```
-```perl
-sub get_user_details_from_rid {
+my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' -c 'queryuser $rid' '$global_target' 2>&1";
 ~~~
-	return unless $global_detailed;
-	my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' -c 'queryuser $rid' '$global_target' 2>&1";
-~~~
-	if ($acb_int & 0x00000001) {
+if ($acb_int & 0x00000001) {
 	printf $pad . "%-25.25s: %s\n", "Account Disabled", "True";
-	} else {
+} else {
 	printf $pad . "%-25.25s: %s\n", "Account Disabled", "False";
 	}
 ```
@@ -165,6 +158,10 @@ foreach my $grouptype ("builtin", "domain") {
 net rpcコマンドで先程取得した各グループに所属するユーザを問い合わせる
 ```perl
 $command = "net rpc group members '$groupname' -W '$global_workgroup' -I '$global_target' -U'$global_username'\%'$global_password' 2>&1\n";
+```
+rpcclientの「enum_dom_groups」でローカル・グローバルグループの列挙
+```perl
+my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' '$global_target' -c \"enumdomgroups\" 2>&1";
 ```
 
 
