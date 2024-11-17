@@ -3,6 +3,8 @@
   - nmblookup (kali〇, ELF)
   - [rpcclient](https://github.com/samba-team/samba/tree/e4e3f05cd7d6fdc98a24f592a099f7d24136788d/source3/rpcclient) (kali〇, ELF)
   - smbclient (kali〇, ELF)
+  - smbget (kali〇, ELF)
+  - winexe (kali〇, ELF)
 
 - [cyberchef](https://github.com/gchq/CyberChef)
 - [enum4linux](https://github.com/CiscoCXSecurity/enum4linux) (kali×, Perl)
