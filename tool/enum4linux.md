@@ -213,6 +213,7 @@ print "$sid_and_user\n" if $sid_and_user =~ /\((Local|Domain) Group\)/;
 
 
 ## [-l](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L416)
+ldapsearchを実行しているが、エラーがででうまく実行されないので参考にならない
 ```perl
 my $command = "ldapsearch -x -h '$global_target' -p 389 -s base namingContexts 2>&1";
 ```
