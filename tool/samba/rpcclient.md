@@ -1,5 +1,5 @@
 https://www.samba.org/samba/docs/current/man-html/rpcclient.1.html
-## help
+## -?
 ```
 Usage: rpcclient [OPTION...] BINDING-STRING|HOST
 Options:
