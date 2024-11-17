@@ -1,3 +1,4 @@
+https://www.samba.org/samba/docs/current/man-html/smbclient.1.html
 ## help
 ```
 Usage: smbclient [OPTIONS] service <password>
