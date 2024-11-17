@@ -173,7 +173,7 @@ my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_p
 
 ## [-r](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L832)
 rpcclientの「lookupnames」で指定ユーザのSIDを問い合わせる  
-`-k`でユーザ名が指定されいなければ、デフォルトで`administrator,guest,krbtgt,domain admins,root,bin,non`の８ユーザ  
+`-k`オプションでユーザ名が指定されいなければ、デフォルトで`administrator,guest,krbtgt,domain admins,root,bin,non`の８ユーザ  
 カウントしたSIDが２回以上にならないとプロンプトに出力されないので、１回しかカウントしていないSIDは出力されない  
 なぜenum4linuxがこの仕様なのかわからないがあんま使い勝手は良くなさそう
 ```perl
@@ -190,9 +190,9 @@ if (! defined($sid) and $global_username) {
 ~~~~
 	my $command = "rpcclient -W '$global_workgroup' -U% '$global_target' -c 'lookupnames $known_username' 2>&1";
 ```
-取得したSIDに対し、RIDサイクルを実施する  
-問い合わせるRIDの範囲はデフォルトでは、「500-550,1000-1050」（`-R`で範囲を指定できる）  
-また`-K`が指定されている場合、最後のRID範囲の終値を「999999」に設定する  
+取得したSIDに対し、rpcclientの「lookupsids」でRIDサイクルを実施する  
+問い合わせるRIDの範囲はデフォルトでは、「500-550,1000-1050」（`-R`オプションで範囲を指定できる）  
+また`-K`オプションが指定されている場合、最後のRID範囲の終値を「999999」に設定する  
 （ようするに失敗するまで無限に問い合わせる、しかし`-K`を指定している場合1000回連続でSID取得失敗するとRIDサイクルが終了する）
 ```perl
 foreach my $rid ($start_rid..$end_rid) {
@@ -207,6 +207,8 @@ $sid_and_user =~ s/\(2\)/(Domain Group)/;
 print "$sid_and_user\n" if $sid_and_user =~ /\((Local|Domain) User\)/;
 print "$sid_and_user\n" if $sid_and_user =~ /\((Local|Domain) Group\)/;
 ```
+sidの種類がグループかユーザに応じてさらに調査する
+グループの場合は`-G`オプションのrpcclientの「querygroup」と同様
 
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
