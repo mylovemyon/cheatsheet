@@ -208,8 +208,8 @@ print "$sid_and_user\n" if $sid_and_user =~ /\((Local|Domain) User\)/;
 print "$sid_and_user\n" if $sid_and_user =~ /\((Local|Domain) Group\)/;
 ```
 `-d`オプションがある場合、sidの種類がグループかユーザに応じてさらに調査する  
-グループの場合は、`-G`オプションのrpcclientの「querygroup」と同様  
-ユーザの場合は、`-U`オプションのrpcclientの「queryuser」と同様 
+グループの場合は、`-G`オプションと同様 rpcclientの「querygroup」  
+ユーザの場合は、`-U`オプション同様 rpcclientの「queryuser」
 
 
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
