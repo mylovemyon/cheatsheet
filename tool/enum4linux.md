@@ -100,7 +100,7 @@ my $command = "rpcclient -W '$global_workgroup' -c querydispinfo -U'$global_user
 ~~~
 $command = "rpcclient -W '$global_workgroup' -c enumdomusers -U'$global_username'\%'$global_password' -d 10 '$global_target' 2>&1";
 ```
-`-d`も引数である場合、先程のコマンドで取得したRIDを用いて「queryuser」で各ユーザの詳細を調査  
+`-d`オプションがある場合、取得したRIDを用いて「queryuser」で各ユーザの詳細を調査  
 「acb_info」を整形して人に分かりやすい形式で出力するのでわかりやすい
 ```perl
 my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' -c 'queryuser $rid' '$global_target' 2>&1";
@@ -128,11 +128,11 @@ smbclientの「-L」で共有を列挙（smbclientでは、NTハッシュでの�
 ```perl
 my $command = "smbclient -W '$global_workgroup' -L //'$global_target' -U'$global_username'\%'$global_password' 2>&1";
 ```
-列挙した共有にアクセス・コマンド実行しログインユーザのマッピング・読み取り権限を確認する
+列挙した共有にアクセス・DIRコマンド実行しログインユーザのマッピング・読み取り権限を確認する
 ```perl
 my $command = "smbclient -W '$global_workgroup' //'$global_target'/'$share' -U'$global_username'\%'$global_password' -c dir 2>&1";
 ```
-`-A`も引数である場合、ディレクトリを作成し書き込み権限も確認する
+`-A`オプションもある場合、ディレクトリを作成し書き込み権限も確認する
 ディレクトリが作成されれば、削除も行う
 ```perl
 $command = "smbclient -W '$global_workgroup' //'$global_target'/'$share' -U'$global_username'\%'$global_password' -c 'mkdir $random_string' 2>&1";
@@ -166,7 +166,7 @@ my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_p
 ~~~
 $command = "net rpc group members '$groupname' -W '$global_workgroup' -I '$global_target' -U'$global_username'\%'$global_password' 2>&1\n";
 ```
-さらに`-d`が指定されている場合、先程のコマンドで取得したRIDを用いてrpcclientの「querygroup」で各グループを調査
+さらに`-d`オプションがある場合、取得したRIDを用いてrpcclientの「querygroup」で各グループを調査
 ```perl
 my $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' -c 'querygroup $rid' '$global_target' 2>&1";
 ```
