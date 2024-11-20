@@ -228,7 +228,7 @@ my $command = "smbclient -W '$global_workgroup' //'$global_target'/ipc\$ -U'$glo
 print "$os_info\n";
 ```
 rpcclientの「srvinfo」でサーバ情報を問い合わせる
-```
+```perl
 $command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' -c 'srvinfo' '$global_target' 2>&1";
 ```
 
