@@ -1,5 +1,6 @@
 ## tools
 - samba
+  - net rpc (kali, C)
   - nmblookup (kali〇, C)
   - [rpcclient](https://github.com/samba-team/samba/tree/e4e3f05cd7d6fdc98a24f592a099f7d24136788d/source3/rpcclient) (kali〇, C)
   - smbclient (kali〇, C)
