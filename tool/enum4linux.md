@@ -219,6 +219,20 @@ my $command = "ldapsearch -x -h '$global_target' -p 389 -s base namingContexts 2
 ```
 
 
+[-o](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L476)
+rpcclientで接続後、「q」コマンドで終了、「Domain=...」の出力あれば出力
+```perl
+my $command = "smbclient -W '$global_workgroup' //'$global_target'/ipc\$ -U'$global_username'\%'$global_password' -c 'q' 2>&1";
+~~~
+($os_info) = $os_info =~ /(Domain=[^\n]+)/s;
+print "$os_info\n";
+```
+rpcclientの「srvinfo」でサーバ情報を問い合わせる
+```
+$command = "rpcclient -W '$global_workgroup' -U'$global_username'\%'$global_password' -c 'srvinfo' '$global_target' 2>&1";
+```
+
+
 ## [-n](https://github.com/CiscoCXSecurity/enum4linux/blob/ee106b71ffda52c070057e10a9ee3f28e14db8df/enum4linux.pl#L359)
 `nmblookup`コマンドを使用してノードステータスの問い合わせを実行。
 ```perl
