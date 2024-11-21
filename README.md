@@ -12,3 +12,4 @@
 - [enum4linux](https://github.com/CiscoCXSecurity/enum4linux) (kali×, Perl)
 - [ldapsearch](https://github.com/openldap/openldap/blob/master/clients/tools/ldapsearch.c) (kali〇, C)
 - [polenum](https://github.com/Wh1t3Fox/polenum/tree/master) (kali〇, python)
+- [sliver](https://github.com/BishopFox/sliver) (kali×, Go)
