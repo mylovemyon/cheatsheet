@@ -1,5 +1,3 @@
-https://github.com/CiscoCXSecurity/enum4linux  
-
 ## help
 ```
 enum4linux v0.9.1 (http://labs.portcullis.co.uk/application/enum4linux/)
