@@ -7,7 +7,7 @@
   - smbget (kali〇, C)
   - winexe (kali〇, C)
 
-- [cyberchef](https://github.com/gchq/CyberChef)
+- [cyberchef](https://github.com/gchq/CyberChef){:target="_blank"}
 - [Evil-WinRM](https://github.com/Hackplayers/evil-winrm) (kali〇, Ruby)
 - [enum4linux](https://github.com/CiscoCXSecurity/enum4linux) (kali×, Perl)
 - [ldapsearch](https://github.com/openldap/openldap/blob/master/clients/tools/ldapsearch.c) (kali〇, C)
