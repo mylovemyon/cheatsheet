@@ -27,3 +27,7 @@ Usage: evil-winrm -i IP -u USER [-s SCRIPTS_PATH] [-e EXES_PATH] [-P PORT] [-a U
 HTTPS用のポートは5986番ポートを使用する（デフォルトのHTTPは5985番）  
 WinRMでHTTPSの設定がされていないと、このオプションは使用できない。  
 https://learn.microsoft.com/ja-jp/troubleshoot/windows-client/system-management-components/configure-winrm-for-https
+
+
+## -U
+wsman
