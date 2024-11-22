@@ -31,3 +31,12 @@ https://learn.microsoft.com/ja-jp/troubleshoot/windows-client/system-management-
 
 ## -U
 デフォルトは「POST /wsman」HTTPを使用してWinRMを行う。デフォルト設定のままだと、wsman以外のURLではWinRMを使用できない
+
+
+## -l
+自動でログファイルが作成され、$loggerを使用してログ出力している  
+実行コマンド、コマンド結果もログ出力されている
+```ruby
+$filepath = "#{$full_logging_path}/#{Time.now.strftime('%Y%d%m')}/#{$host}/#{Time.now.strftime('%H%M%S')}"
+$logger = Logger.new($filepath)
+```
