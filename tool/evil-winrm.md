@@ -30,4 +30,4 @@ https://learn.microsoft.com/ja-jp/troubleshoot/windows-client/system-management-
 
 
 ## -U
-wsman
+デフォルトは「POST /wsman」HTTPを使用してWinRMを行う。デフォルト設定のままだと、wsman以外のURLではWinRMを使用できない
