@@ -37,10 +37,9 @@ opts.on('-S', '--ssl', 'Enable ssl') do |_val|
 デフォルトは「POST /wsman」HTTPを使用してWinRMを行う。デフォルト設定のままだと、wsman以外のURLではWinRMを使用できない
 
 
-
-## -N
-リモート上でのタブ補完を無効にする
-
+## [-N](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L177)
+リモート上でのタブ補完を無効にする  
+※現時点で、KaliのRubyの「Readline.quoting_detection_proc」は実装されていなのでタブ補完は機能していない
 
 ## -l
 自動でログファイルが作成され、$loggerを使用してログ出力している  
@@ -51,7 +50,7 @@ $logger = Logger.new($filepath)
 ```
 
 
-## menu
+## [menu](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L836)
 ```
 *Evil-WinRM* PS C:\Users\Administrator\Documents> menu
 
