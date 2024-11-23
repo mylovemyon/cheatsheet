@@ -44,3 +44,29 @@ opts.on('-S', '--ssl', 'Enable ssl') do |_val|
 $filepath = "#{$full_logging_path}/#{Time.now.strftime('%Y%d%m')}/#{$host}/#{Time.now.strftime('%H%M%S')}"
 $logger = Logger.new($filepath)
 ```
+
+
+## menu
+```
+*Evil-WinRM* PS C:\Users\Administrator\Documents> menu
+
+
+   ,.   (   .      )               "            ,.   (   .      )       .   
+  ("  (  )  )'     ,'             (`     '`    ("     )  )'     ,'   .  ,)  
+.; )  ' (( (" )    ;(,      .     ;)  "  )"  .; )  ' (( (" )   );(,   )((   
+_".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')  
+\_   _____/__  _|__|  |    ((  (  /  \    /  \__| ____\______   \  /     \  
+ |    __)_\  \/ /  |  |    ;_)_') \   \/\/   /  |/    \|       _/ /  \ /  \ 
+ |        \\   /|  |  |__ /_____/  \        /|  |   |  \    |   \/    Y    \
+/_______  / \_/ |__|____/           \__/\  / |__|___|  /____|_  /\____|__  /
+        \/                               \/          \/       \/         \/
+
+       By: CyberVaca, OscarAkaElvis, Jarilaos, Arale61 @Hackplayers
+
+[+] Bypass-4MSI
+[+] services
+[+] upload
+[+] download
+[+] menu
+[+] exit
+```
