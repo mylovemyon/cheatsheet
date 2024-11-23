@@ -76,6 +76,9 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 [+] menu
 [+] exit
 ```
+
+
+## Bypass-4MSI
 「Bypass-4MSI」を実行すると、使用できるコマンドが増える
 ```
 *Evil-WinRM* PS C:\Users\Administrator\Documents> Bypass-4MSI
