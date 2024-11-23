@@ -50,7 +50,9 @@ $logger = Logger.new($filepath)
 ```
 
 
+# command
 ## [menu](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L836)
+使用可能なevil-winrm独自のコマンドを確認できる
 ```
 *Evil-WinRM* PS C:\Users\Administrator\Documents> menu
 
@@ -74,7 +76,7 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 [+] menu
 [+] exit
 ```
-「Bypass-4MSI」を実行すると、menuから使用できるコマンドが増える
+「Bypass-4MSI」を実行すると、使用できるコマンドが増える
 ```
 *Evil-WinRM* PS C:\Users\Administrator\Documents> Bypass-4MSI
                                         
