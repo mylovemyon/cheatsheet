@@ -119,6 +119,7 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 [+] menu
 [+] exit
 ```
+AMSIを倍バスるるためにPowershellが実行される
 ```powershell
 FUncTIon Get-PZ2zmpurexnDXVSxx {
     Param ($ljOHgifgLteNDYGV, $HWN81YY7isiEXwOd)
