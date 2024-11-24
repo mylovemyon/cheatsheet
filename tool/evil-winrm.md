@@ -78,7 +78,7 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 ```
 
 
-## Bypass-4MSI
+## [Bypass-4MSI](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L873)
 「Bypass-4MSI」を実行すると、使用できるコマンドが増える
 ```
 *Evil-WinRM* PS C:\Users\Administrator\Documents> Bypass-4MSI
