@@ -353,10 +353,8 @@ namespace ShellcodeTest
 				return 0;
 			}
 		}
-		// Token: 0x06000009 RID: 9
 		[DllImport("kernel32.dll")]
 		public static extern bool IsWow64Process(IntPtr hProcess, out bool lpSystemInfo);
-		// Token: 0x0600000A RID: 10 RVA: 0x00002134 File Offset: 0x00001134
 		public static bool IsWow64Process(Process process)
 		{
 			bool flag = false;
