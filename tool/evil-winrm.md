@@ -331,6 +331,7 @@ namespace ShellcodeTest
 		private static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
 		public static int Inject(string x86, string x64, int procPID)
 		{
+			// System.Diagnostics.Process.GetProcessByIdで引数で指定されたプロセスIDを取得（プロセスIDがないとエラーになる）
 			Process processById = Process.GetProcessById(procPID);
 			Console.WriteLine(processById.Id);
 			string text;
