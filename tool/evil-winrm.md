@@ -297,7 +297,7 @@ $base64 = $donutfile
 }
 }
 ```
-
+どうやら先程のアセンブリは、.NET製っぽいのでdnSpyでデコンパイルできた
 ```csharp
 using System;
 using System.Diagnostics;
