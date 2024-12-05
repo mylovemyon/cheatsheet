@@ -73,7 +73,7 @@ donut: clean
 	# 「-I include」でincludeディレクトリを検索
 	# loader.obj、hash.obj、encrypt.obj、depack.obj、clib.objが作成される（exeは「-c」オプションにより作成されない）
 	cl -DBYPASS_AMSI_B -DBYPASS_WLDP_A -DBYPASS_ETW_B -Zp8 -c -nologo -Gy -Os -O1 -GR- -EHa -Oi -GS- -I include loader\loader.c hash.c encrypt.c loader\depack.c loader\clib.c
-	# 
+	# 「-order」は、個別にパッケージ化された (COMDAT) 関数のリンク順序を指定する
 	link -nologo -order:@loader\order.txt -entry:DonutLoader -fixed -subsystem:console -nodefaultlib loader.obj hash.obj encrypt.obj depack.obj clib.obj
 	exe2h loader.exe
 	
