@@ -47,9 +47,12 @@
     donut --arch:x86 --class:TestClass --method:RunProcess --args:notepad.exe --input:loader.dll
     donut -iloader.dll -c TestClass -m RunProcess -p"calc notepad" -s http://remote_server.com/modules/
 ```
+
+
 ## Building
 windowsの場合は`nmake -f makefile.msvc`
 ```makefile
+# donutを作成する前にCleanターゲットを実行
 donut: clean
 	@echo ###### Building exe2h ######
 	cl /nologo loader\exe2h\exe2h.c loader\exe2h\mmap-windows.c
@@ -90,6 +93,8 @@ inject:
 	cl -Zp8 -nologo -DTEST -I include loader\inject.c
 inject_local:
 	cl -Zp8 -nologo -DTEST -I include loader\inject_local.c
+# cleanターゲットは疑似ターゲットであり、ファイル参照せずコマンドのみ実行する
+# 「del」はMS-DOSのファイル削除コマンドだが、
 clean:
 	@del /Q mmap-windows.obj donut.obj hash.obj encrypt.obj inject.obj inject_local.obj depack.obj format.obj clib.obj exe2h.exe loader.exe hash.exe encrypt.exe inject.exe inject_local.exe donut.exe lib\donut.lib lib\donut.exp lib\donut.dll include\donut.res
 ```
