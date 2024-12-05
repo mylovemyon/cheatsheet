@@ -55,6 +55,7 @@ windowsの場合は`nmake -f makefile.msvc`
 # donutを作成する前にCleanターゲットを実行
 donut: clean
 	@echo ###### Building exe2h ######
+	# exe2h.exeが生成される
 	cl /nologo loader\exe2h\exe2h.c loader\exe2h\mmap-windows.c
 	
 	@echo ###### Building loader ######
@@ -94,7 +95,7 @@ inject:
 inject_local:
 	cl -Zp8 -nologo -DTEST -I include loader\inject_local.c
 # cleanターゲットは疑似ターゲットであり、ファイル参照せずコマンドのみ実行する
-# 「del」はMS-DOSのファイル削除コマンドだが、
+# 「del」はMS-DOSのファイル削除コマンド
 clean:
 	@del /Q mmap-windows.obj donut.obj hash.obj encrypt.obj inject.obj inject_local.obj depack.obj format.obj clib.obj exe2h.exe loader.exe hash.exe encrypt.exe inject.exe inject_local.exe donut.exe lib\donut.lib lib\donut.exp lib\donut.dll include\donut.res
 ```
