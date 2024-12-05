@@ -50,7 +50,8 @@
 
 
 ## Building
-windowsの場合は`nmake -f makefile.msvc`
+windowsの場合は  
+`nmake -f makefile.msvc`
 ```makefile
 # donutを作成する前にCleanターゲットを実行
 donut: clean
@@ -59,6 +60,7 @@ donut: clean
 	cl /nologo loader\exe2h\exe2h.c loader\exe2h\mmap-windows.c
 	
 	@echo ###### Building loader ######
+	# 「-D」でプリプロセッサシンボルを定義（今回は「BYPASS_AMSI_B」と「BYPASS_WLDP_A」を定義）
 	cl -DBYPASS_AMSI_B -DBYPASS_WLDP_A -DBYPASS_ETW_B -Zp8 -c -nologo -Gy -Os -O1 -GR- -EHa -Oi -GS- -I include loader\loader.c hash.c encrypt.c loader\depack.c loader\clib.c 
 	link -nologo -order:@loader\order.txt -entry:DonutLoader -fixed -subsystem:console -nodefaultlib loader.obj hash.obj encrypt.obj depack.obj clib.obj
 	exe2h loader.exe
