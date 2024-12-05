@@ -56,16 +56,22 @@ windowsの場合は
 # donutを作成する前にCleanターゲットを実行
 donut: clean
 	@echo ###### Building exe2h ######
-	# exe2h.exe、exe2h.obj、mmap-windows.objが生成される（「/nologo」はコンパイル開始時の著作権情報の表示と情報メッセージの表示を抑制）
+	# exe2h.exe、exe2h.obj、mmap-windows.objが作成される（「/nologo」はコンパイル開始時の著作権情報の表示と情報メッセージの表示を抑制）
 	cl /nologo loader\exe2h\exe2h.c loader\exe2h\mmap-windows.c
 	
 	@echo ###### Building loader ######
-	# 「-D」でプリプロセッサシンボルを定義（今回は「BYPASS_AMSI_B」と「BYPASS_WLDP_A」を定義）
-	# 「-Zp8」で構造体を 8 バイト境界にパックする (x86、ARM、および ARM64 の既定値)。「-c」でリンクを行わないでコンパイルする
+	# 「-D」は、プリプロセッサシンボルを定義（今回は「BYPASS_AMSI_B」と「BYPASS_WLDP_A」を定義）
+	# 「-Zp8」は、構造体を 8 バイト境界にパックする (x86、ARM、および ARM64 の既定値)
+	# 「-c」は、リンクを行わないでコンパイルする（.objファイルのみが作成される）
 	# 「-Gy」で
-	# 「-GS-」バッファーのセキュリティチェックをオフにする
+	# 「-Os」は、実行可能ファイルで、サイズの小ささを優先させる
+	# 「-O1」は、コードを最小化する。
+	# 「-GR-」はランタイム型情報を無効にする。有効にすると、.rdataセクションのサイズが大きくなる
+	# 「-EHa」は、C++ 例外処理を有効にする
+	# 「-Oi」は、組み込み関数を生成する。実行速度は向上するが、作成されたコードが追加されるためサイズが大きくなる可能性があり
+	# 「-GS-」は、バッファーのセキュリティチェックをオフにする
 	# 「-I include」でincludeディレクトリを検索
-	# loader.obj、hash.obj、encrypt.obj、depack.obj、clib.objが生成される
+	# loader.obj、hash.obj、encrypt.obj、depack.obj、clib.objが作成される（exeは「-c」オプションにより作成されない）
 	cl -DBYPASS_AMSI_B -DBYPASS_WLDP_A -DBYPASS_ETW_B -Zp8 -c -nologo -Gy -Os -O1 -GR- -EHa -Oi -GS- -I include loader\loader.c hash.c encrypt.c loader\depack.c loader\clib.c 
 	link -nologo -order:@loader\order.txt -entry:DonutLoader -fixed -subsystem:console -nodefaultlib loader.obj hash.obj encrypt.obj depack.obj clib.obj
 	exe2h loader.exe
