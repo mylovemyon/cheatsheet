@@ -63,7 +63,7 @@ donut: clean
 	# 「-D」は、プリプロセッサシンボルを定義（今回は「BYPASS_AMSI_B」と「BYPASS_WLDP_A」を定義）
 	# 「-Zp8」は、構造体を 8 バイト境界にパックする (x86、ARM、および ARM64 の既定値)
 	# 「-c」は、リンクを行わないでコンパイルする（.objファイルのみが作成される）
-	# 「-Gy」で
+	# 「-Gy」は、コンパイラが個々の関数をパッケージ関数 (COMDAT) の形式でパッケージ化できるようにする（リンカーを使用するには、関数を COMDAT として個別にパッケージ化し、DLL または .exe ファイル内の個々の関数を除外または順序付けする必要がある）
 	# 「-Os」は、実行可能ファイルで、サイズの小ささを優先させる
 	# 「-O1」は、コードを最小化する。
 	# 「-GR-」はランタイム型情報を無効にする。有効にすると、.rdataセクションのサイズが大きくなる
@@ -72,7 +72,8 @@ donut: clean
 	# 「-GS-」は、バッファーのセキュリティチェックをオフにする
 	# 「-I include」でincludeディレクトリを検索
 	# loader.obj、hash.obj、encrypt.obj、depack.obj、clib.objが作成される（exeは「-c」オプションにより作成されない）
-	cl -DBYPASS_AMSI_B -DBYPASS_WLDP_A -DBYPASS_ETW_B -Zp8 -c -nologo -Gy -Os -O1 -GR- -EHa -Oi -GS- -I include loader\loader.c hash.c encrypt.c loader\depack.c loader\clib.c 
+	cl -DBYPASS_AMSI_B -DBYPASS_WLDP_A -DBYPASS_ETW_B -Zp8 -c -nologo -Gy -Os -O1 -GR- -EHa -Oi -GS- -I include loader\loader.c hash.c encrypt.c loader\depack.c loader\clib.c
+	# 
 	link -nologo -order:@loader\order.txt -entry:DonutLoader -fixed -subsystem:console -nodefaultlib loader.obj hash.obj encrypt.obj depack.obj clib.obj
 	exe2h loader.exe
 	
