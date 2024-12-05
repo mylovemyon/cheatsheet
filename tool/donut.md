@@ -55,7 +55,7 @@ windowsの場合は`nmake -f makefile.msvc`
 # donutを作成する前にCleanターゲットを実行
 donut: clean
 	@echo ###### Building exe2h ######
-	# exe2h.exeが生成される（「/nologo」はコンパイル開始時の著作権情報の表示と情報メッセージの表示を抑制）
+	# exe2h.exe、exe2h.obj、mmap-windows.objが生成される（「/nologo」はコンパイル開始時の著作権情報の表示と情報メッセージの表示を抑制）
 	cl /nologo loader\exe2h\exe2h.c loader\exe2h\mmap-windows.c
 	
 	@echo ###### Building loader ######
