@@ -61,6 +61,9 @@ donut: clean
 	
 	@echo ###### Building loader ######
 	# 「-D」でプリプロセッサシンボルを定義（今回は「BYPASS_AMSI_B」と「BYPASS_WLDP_A」を定義）
+	# 「-Zp8」で構造体を 8 バイト境界にパックする (x86、ARM、および ARM64 の既定値)。「-c」でリンクを行わないでコンパイルする
+	# 「-Gy」で
+	# 「-I include」でincludeディレクトリを検索
 	cl -DBYPASS_AMSI_B -DBYPASS_WLDP_A -DBYPASS_ETW_B -Zp8 -c -nologo -Gy -Os -O1 -GR- -EHa -Oi -GS- -I include loader\loader.c hash.c encrypt.c loader\depack.c loader\clib.c 
 	link -nologo -order:@loader\order.txt -entry:DonutLoader -fixed -subsystem:console -nodefaultlib loader.obj hash.obj encrypt.obj depack.obj clib.obj
 	exe2h loader.exe
