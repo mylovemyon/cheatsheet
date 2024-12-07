@@ -51,10 +51,11 @@
 
 ## Building
 windowsの場合は  
-`nmake -f makefile.msvc`
+`nmake -f makefile.msvc`（「nmake」コマンドでターゲットを指定しない場合、一番最初に書かれたターゲット（この場合は「donut」ターゲット）が実行される）
 ```makefile
-# donutを作成する前にCleanターゲットを実行
+# 「@echo」の前に、依存ターゲットとしてCleanターゲットを実行
 donut: clean
+	#「@echo」は、「###### Building exe2h ######」のみを出力する
 	@echo ###### Building exe2h ######
 	# exe2h.exe、exe2h.obj、mmap-windows.objが作成される（「/nologo」はコンパイル開始時の著作権情報の表示と情報メッセージの表示を抑制）
 	cl /nologo loader\exe2h\exe2h.c loader\exe2h\mmap-windows.c
