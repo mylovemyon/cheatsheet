@@ -74,6 +74,11 @@ donut: clean
 	# loader.obj、hash.obj、encrypt.obj、depack.obj、clib.objが作成される（exeは「-c」オプションにより作成されない）
 	cl -DBYPASS_AMSI_B -DBYPASS_WLDP_A -DBYPASS_ETW_B -Zp8 -c -nologo -Gy -Os -O1 -GR- -EHa -Oi -GS- -I include loader\loader.c hash.c encrypt.c loader\depack.c loader\clib.c
 	# 「-order」は、個別にパッケージ化された (COMDAT) 関数のリンク順序を指定する
+	# 「-entry:」は、開始アドレスとしてエントリ ポイント関数を指定
+	# 「-fixed」は、指定されたベースアドレスにだけプログラムを読み込むように指示する
+	# 「subsystem:console」は、実行可能ファイルの環境を「Win32モードアプリケーション」にしていする
+	# 「-nodefaultlib」は、外部参照を解決するときに検索するライブラリの一覧からすべての既定のライブラリを削除する
+	# loader.exeが出力される
 	link -nologo -order:@loader\order.txt -entry:DonutLoader -fixed -subsystem:console -nodefaultlib loader.obj hash.obj encrypt.obj depack.obj clib.obj
 	exe2h loader.exe
 	
