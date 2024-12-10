@@ -32,7 +32,7 @@
 #include "loader.h"
 
 DWORD MainProc(PDONUT_INSTANCE inst);
-
+// makefile.msvcでビルドすると、loader.exeのエントリポイントはこの「DonutLoader」になる
 HANDLE DonutLoader(PDONUT_INSTANCE inst) {
     CreateThread_t     _CreateThread;
     GetThreadContext_t _GetThreadContext;
