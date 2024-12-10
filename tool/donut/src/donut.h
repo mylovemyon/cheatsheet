@@ -1,6 +1,8 @@
 // everything required for an instance goes into the following structure
+// 構造体「_DONUT_INSTANCE」型を変数「DONUT_INSTANCE」とポインタ変数「*PDONUT_INSTANCE」の２つで定義
 typedef struct _DONUT_INSTANCE {
     uint32_t    len;                          // total size of instance
+    // 「DONUT_CRYPT」型は、donut.hで定義
     DONUT_CRYPT key;                          // decrypts instance if encryption enabled
 
     uint64_t    iv;                           // the 64-bit initial value for maru hash
