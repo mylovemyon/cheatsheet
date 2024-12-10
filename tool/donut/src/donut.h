@@ -1,3 +1,4 @@
+// everything required for an instance goes into the following structure
 typedef struct _DONUT_INSTANCE {
     uint32_t    len;                          // total size of instance
     DONUT_CRYPT key;                          // decrypts instance if encryption enabled
