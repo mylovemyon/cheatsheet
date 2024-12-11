@@ -30,7 +30,7 @@
 */
 
 #include "loader.h"
-
+// donut.hで定義した「PDONUT_INSTANCE」型を引数
 DWORD MainProc(PDONUT_INSTANCE inst);
 // makefile.msvcでビルドすると、loader.exeのエントリポイントはこの「DonutLoader」になる
 HANDLE DonutLoader(PDONUT_INSTANCE inst) {
