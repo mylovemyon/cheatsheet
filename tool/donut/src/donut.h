@@ -12,6 +12,7 @@ typedef struct _DONUT_INSTANCE {
       void     *addr[64];                     // holds up to 64 api addresses
       // include prototypes only if header included from loader.h
       #ifdef LOADER_H
+      // union内にある無名構造体は、この場合「api.LoadLibrary」と指定できる
       struct {
         // imports from kernel32.dll or kernelbase.dll
         LoadLibraryA_t                   LoadLibraryA;
