@@ -45,12 +45,13 @@ HANDLE DonutLoader(PDONUT_INSTANCE inst) {
     LPVOID             host;
     // sizeofでDONUT_INSTANCE型のサイズを取得（%zuは、size_t型）
     DPRINT("sizeof(DONUT_INSTANCE)        : %zu\n", sizeof(DONUT_INSTANCE));
-    // offsetofdでsizeofでDONUT_INSTANCE型のapiメンバのオフセットを取得
+    // offsetofでDONUT_INSTANCE型のapiメンバのオフセットを取得
     DPRINT("offsetof(DONUT_INSTANCE, api) : %zu\n", offsetof(DONUT_INSTANCE, api));
     
     // create thread and execute original entrypoint?
     if(inst->oep != 0) {
       DPRINT("Resolving address of CreateThread");
+      // CreateThreadのオフセット差を算出し、ULONG_PTR単位に変換
       hash = inst->api.hash[ (offsetof(DONUT_INSTANCE, api.CreateThread) - offsetof(DONUT_INSTANCE, api)) / sizeof(ULONG_PTR)];
       _CreateThread = (CreateThread_t)xGetProcAddressByHash(inst, hash, inst->iv);
       
