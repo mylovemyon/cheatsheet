@@ -34,6 +34,7 @@
 DWORD MainProc(PDONUT_INSTANCE inst);
 // makefile.msvcでビルドすると、loader.exeのエントリポイントはこの「DonutLoader」になる
 HANDLE DonutLoader(PDONUT_INSTANCE inst) {
+    // CreateThread_t、GetThreadContext_t、GetCurrentThread_t、NtContinue_t型は自作ヘッダ「winapi.h」で定義
     CreateThread_t     _CreateThread;
     GetThreadContext_t _GetThreadContext;
     GetCurrentThread_t _GetCurrentThread;
