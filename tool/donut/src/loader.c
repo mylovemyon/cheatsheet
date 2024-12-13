@@ -32,9 +32,9 @@
 #include "loader.h"
 // donut.hで定義した「PDONUT_INSTANCE」型を引数
 DWORD MainProc(PDONUT_INSTANCE inst);
-// makefile.msvcでビルドすると、loader.exeのエントリポイントはこの「DonutLoader」になる
+// makefile.msvcでビルドすると、loader.exeのエントリポイントはこのDonutLoaderになる
 HANDLE DonutLoader(PDONUT_INSTANCE inst) {
-    // CreateThread_t、GetThreadContext_t、GetCurrentThread_t、NtContinue_t型は自作ヘッダ「winapi.h」で定義
+    // CreateThread_t、GetThreadContext_t、GetCurrentThread_t、NtContinue_t型は自作ヘッダwinapi.hで定義
     CreateThread_t     _CreateThread;
     GetThreadContext_t _GetThreadContext;
     GetCurrentThread_t _GetCurrentThread;
@@ -43,8 +43,9 @@ HANDLE DonutLoader(PDONUT_INSTANCE inst) {
     HANDLE             h = NULL;
     CONTEXT            c;
     LPVOID             host;
-    
+    // sizeofでDONUT_INSTANCE型のサイズを取得（%zuは、size_t型）
     DPRINT("sizeof(DONUT_INSTANCE)        : %zu\n", sizeof(DONUT_INSTANCE));
+    // offsetofdでsizeofでDONUT_INSTANCE型のapiメンバのオフセットを取得
     DPRINT("offsetof(DONUT_INSTANCE, api) : %zu\n", offsetof(DONUT_INSTANCE, api));
     
     // create thread and execute original entrypoint?
